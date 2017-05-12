@@ -1,0 +1,813 @@
+function calc() {
+	var summary = '<div class="jumbotron">';
+	var error = 0;
+	var e = document.getElementById("Fighter1");
+	var Fighter1 = e.options[e.selectedIndex].text;
+	e = document.getElementById("Fighter2");
+	var Fighter2 = e.options[e.selectedIndex].text;
+	e = document.getElementById("Fighter3");
+	var Fighter3 = e.options[e.selectedIndex].text;
+	e = document.getElementById("Quadrant");
+	var Quadrant = parseInt(e.options[e.selectedIndex].text);
+	e = document.getElementById("Sector");
+	var Sector = parseInt(e.options[e.selectedIndex].text);
+
+	var Costume1 = getCostume(Fighter1);
+	var AttackRank1 = getAttackRank(Fighter1);
+	var HealthRank1 = getHealthRank(Fighter1);
+	var Costume2 = getCostume(Fighter2);
+	var AttackRank2 = getAttackRank(Fighter2);
+	var HealthRank2 = getHealthRank(Fighter2);
+	var Costume3 = getCostume(Fighter3);
+	var AttackRank3 = getAttackRank(Fighter3);
+	var HealthRank3 = getHealthRank(Fighter3);
+
+	var atk1 = getAttack(Fighter1, Costume1, AttackRank1);
+	var atk2 = getAttack(Fighter2, Costume2, AttackRank2);
+	var atk3 = getAttack(Fighter3, Costume3, AttackRank3);
+	var hth1 = getHealth(Fighter1, Costume1, HealthRank1);
+	var hth2 = getHealth(Fighter2, Costume2, HealthRank2);
+	var hth3 = getHealth(Fighter3, Costume3, HealthRank3);
+	var type1 = getType(Fighter1, Costume1);
+	var type2 = getType(Fighter2, Costume2);
+	var type3 = getType(Fighter3, Costume3);
+	
+	var EnemyHealth = getEnemyHealth(Quadrant, Sector, false);
+	if(EnemyHealth != null){
+		var EnemyAttack = Math.ceil(EnemyHealth * .2)
+		var EnemyType = getEnemyType(Quadrant, Sector, false);
+		var turns;
+
+		switch(EnemyType){
+			case 1:
+				if(type1 == 3 || type1 == 4 || type1 == 7) atk1 *= (1 + Quadrant);
+				if(type2 == 3 || type2 == 4 || type2 == 7) atk2 *= (1 + Quadrant);
+				if(type3 == 3 || type3 == 4 || type3 == 7) atk3 *= (1 + Quadrant);
+				break;
+			case 2:
+				if(type1 == 1 || type1 == 5 || type1 == 7) atk1 *= (1 + Quadrant);
+				if(type2 == 1 || type2 == 5 || type2 == 7) atk2 *= (1 + Quadrant);
+				if(type3 == 1 || type3 == 5 || type3 == 7) atk3 *= (1 + Quadrant);
+				break;
+			case 3:
+				if(type1 == 2 || type1 == 6 || type1 == 7) atk1 *= (1 + Quadrant);
+				if(type2 == 2 || type2 == 6 || type2 == 7) atk2 *= (1 + Quadrant);
+				if(type3 == 2 || type3 == 6 || type3 == 7) atk3 *= (1 + Quadrant);
+				break;
+		}
+		summary += '<div class=\"row\">';
+		summary += '<div class="col-sm-4 col-lg-2"><p>' + Fighter1 + ': ' + atk1 + ' / ' + hth1 + '</p></div>';
+		summary += '<div class="col-sm-4 col-lg-2"><p>' + Fighter2 + ': ' + atk2 + ' / ' + hth2 + '</p></div>';
+		summary += '<div class="col-sm-4 col-lg-2"><p>' + Fighter3 + ': ' + atk3 + ' / ' + hth3 + '</p></div>';
+		summary += '</div>';
+		summary += '<div class=\"row\">';
+		summary += '<div class="col-sm-4 col-lg-2"><p> Damage Per Round:' + EnemyAttack + '</p></div>';
+		summary += '<div class="col-sm-4 col-lg-2"><p> Enemy Health:' + EnemyHealth + '</p></div>';
+		summary += '</div>';
+
+		var totalAtk = atk1 + atk2 + atk3;
+
+		if(EnemyAttack / (hth1 + hth2 + hth3) < .2){
+			if(totalAtk >= (EnemyHealth/2)){
+				summary += '<h1>3 Stars</h1>';
+			}
+			else{
+				turns = (EnemyAttack / (hth1 + hth2 + hth3));
+				if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(.2 / turns))){
+					summary += '<h1>3 Stars</h1>';
+				}
+				else if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(.5 / turns))){
+					summary += '<h1>2 Stars</h1>';
+				}
+				else if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(1 / turns))){
+					summary += '<h1>1 Star</h1>';
+				}
+				else{
+					summary += '<h1>0 Stars</h1>';
+				}
+
+			}
+		}
+		else if(EnemyAttack / (hth1 + hth2 + hth3) < .5) {
+			turns = (EnemyAttack / (hth1 + hth2 + hth3));
+			if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(.5 / turns))){
+				summary += '<h1>2 Stars</h1>';
+			}
+			else if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(1 / turns))){
+				summary += '<h1>1 Star</h1>';
+			}
+			else{
+				summary += '<h1>0 Stars</h1>';
+			}			
+		}
+		else if(EnemyAttack / (hth1 + hth2 + hth3) < 1) {
+			turns = (EnemyAttack / (hth1 + hth2 + hth3));
+			if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(1 / turns))){
+				summary += '<h1>1 Star</h1>';
+			}
+			else{
+				summary += '<h1>0 Stars</h1>';
+			}			
+		}
+		else {
+			summary += '<h1>0 Stars</h1>';
+		}
+	}
+	else{
+		summary += '<p>No Info Available!</p>';
+	}
+	summary += '</div>';
+
+	document.getElementById('summary').innerHTML = summary;
+
+
+}
+
+function getCostume(fighter) {
+	fighter = fighter.replace(/\s+/g, '');
+	fighter += 'Costume';
+	var f = document.getElementById(fighter);
+	if(f == null) return null;
+	return f.options[f.selectedIndex].text;
+}
+
+function getAttackRank(fighter) {
+	fighter = fighter.replace(/\s+/g, '');
+	fighter += 'Atk';
+	return parseInt(document.getElementById(fighter).value);
+}
+
+function getHealthRank(fighter) {
+	fighter = fighter.replace(/\s+/g, '');
+	fighter += 'Hth';
+	return parseInt(document.getElementById(fighter).value);
+}
+
+function getAttack(fighter, costume, rank){
+	switch(fighter){
+		case 'Captain America':
+				return 1500 + expAttack(fighter, rank);
+			break;
+		case 'Collector':
+				return rank;
+			break;
+		case 'Drax':
+				return 150 + expAttack(fighter,rank - 1);
+			break;
+		case 'Falcon':
+				return 800 + expAttack(fighter, rank - 1);
+			break;
+		case 'Gamora':
+				switch(costume){
+					case 'Galactic Assassin':
+						return 300 + expAttack(fighter, rank - 1);
+						break;
+					case 'Galactic':
+						return;
+						break;
+					default:
+						return 150 + expAttack(fighter, rank - 1);
+						break;
+				}
+			break;
+		case 'Groot':
+				switch(costume){
+					case 'Thor Groot':
+						return 440 + expAttack(fighter,rank - 1);
+						break;
+					default:
+						return 220 + expAttack(fighter, rank - 1);
+						break;
+				}
+			break;
+		case 'Iron Man':
+				switch(costume){
+					case 'GodKiller':
+						return 300 + expAttack(fighter, rank - 1);
+						break;
+					default:
+						return 100 + expAttack(fighter, rank - 1);
+						break;
+				}
+			break;
+		case 'Loki':
+				return 100 + expAttack(fighter, rank - 1);
+			break;
+		case 'Mantis':
+				return 500 + expAttack(fighter,rank - 1);
+			break;
+		case 'Nebula':
+				return 600 + expAttack(fighter,rank - 1);
+			break;
+		case 'Nova':
+				return 220 + expAttack(fighter,rank - 1);
+			break;
+		case 'Rocket':
+				return 180 + expAttack(fighter,rank - 1);
+			break;
+		case 'Star Lord':
+				switch(costume){
+					case 'Captain':
+						return 300 + expAttack(fighter, rank - 1);
+						break;
+					case 'Galactic':
+						return 800 + expAttack(fighter, rank - 1);
+						break;
+					default:
+						return 150 + expAttack(fighter, rank - 1);
+						break;
+				}
+			break;
+		default:
+			break;
+	}
+
+}
+
+function getHealth(fighter, costume, rank){
+	switch(fighter){
+		case 'Captain America':
+				return rank;
+			break;
+		case 'Collector':
+				return rank;
+			break;
+		case 'Drax':
+				return 450 + expHealth(fighter, rank - 1);
+			break;
+		case 'Falcon':
+				return rank;
+			break;
+		case 'Gamora':
+				switch(costume){
+					case 'Galactic Assassin':
+						return 900 + expHealth(fighter, rank - 1);
+						break;
+					case 'Galactic':
+						return;
+						break;
+					default:
+						return 450 + expHealth(fighter, rank - 1);
+						break;
+				}
+			break;
+		case 'Groot':
+				switch(costume){
+					case 'Thor Groot':
+						return 1320 + expHealth(fighter, rank  - 1);
+						break;
+					default:
+						return 660 + expHealth(fighter, rank - 1);
+						break;
+				}
+			break;
+		case 'Iron Man':
+				switch(costume){
+					case 'GodKiller':
+						return 900 + expHealth(fighter, rank  - 1);
+						break;
+					default:
+						return 300 + expHealth(fighter, rank - 1);
+						break;
+				}
+			break;
+		case 'Loki':
+				return 300 + expHealth(fighter, rank - 1);
+			break;
+		case 'Mantis':
+				return 1500 + expHealth(fighter, rank - 1);
+			break;
+		case 'Nebula':
+				return 1800 + expHealth(fighter, rank - 1);
+			break;
+		case 'Nova':
+				return 660 + expHealth(fighter, rank - 1);
+			break;
+		case 'Rocket':
+				return 540 + expHealth(fighter, rank - 1);
+			break;
+		case 'Star Lord':
+				switch(costume){
+					case 'Captain':
+						return 900 + expHealth(fighter, rank - 1);
+						break;
+					case 'Galactic':
+						return 2400 + expHealth(fighter, rank - 1);
+						break;
+					default:
+						return 450 + expHealth(fighter, rank - 1);
+						break;
+				}
+			break;
+		default:
+			break;
+	}
+}
+
+function expAttack(fighter, times) {
+	var amount = 0;
+	if(times == 0){
+		return 0;
+	}
+	else {
+		if(times > 6){
+			amount = getAttackRate(fighter, times);
+			var e = expAttack(fighter, times - 1);
+			var f = Math.ceil((times - 6) / 2) + 6;
+			return (amount * f) + e;
+		}
+		else{
+			amount = getAttackRate(fighter, times);
+			var e = expAttack(fighter, times - 1);
+			return (amount * times) + e;
+		}
+	}
+}
+
+function expHealth(fighter, times) {
+	var amount = 0;
+	if(times == 0){
+		return 0;
+	}
+	else {
+		if(times > 6){
+			amount = getHealthRate(fighter, times);
+			var e = expHealth(fighter, times - 1);
+			var f = Math.ceil((times - 6) / 2) + 6;
+			return (amount * f) + e;
+		}
+		else{
+			amount = getHealthRate(fighter, times);
+			var e = expHealth(fighter, times - 1);
+			return (amount * times) + e;
+		}
+	}
+}
+
+function getAttackRate(fighter,rank) {
+	var rate = 0;
+	switch(fighter){
+		case 'Captain America':
+			rate = 60;
+			break;
+		case 'Collector':
+			rate = 55;
+			break;
+		case 'Drax':
+			rate = 50;
+			break;
+		case 'Falcon':
+			rate = 50;
+			break;
+		case 'Gamora':
+			rate = 50;
+			break;
+		case 'Groot':
+			rate = 60;
+			break;
+		case 'Iron Man':
+			rate = 50;
+			break;
+		case 'Loki':
+			rate = 50;
+			break;
+		case 'Mantis':
+			rate = 55;
+			break;
+		case 'Nebula':
+			rate = 60;
+			break;
+		case 'Nova':
+			rate = 60;
+			break;
+		case 'Rocket':
+			rate = 50;
+			break;
+		case 'Star Lord':
+			rate = 50;
+			break;
+		default:
+			break;
+	}
+	if(rank < 14 && rank > 6){
+		rate -= 5 * Math.ceil((rank - 6)/4);
+	}
+	return rate;
+}
+
+function getHealthRate(fighter,rank) {
+	var rate = 0;
+	switch(fighter){
+		case 'Captain America':
+			rate = 180;
+			break;
+		case 'Collector':
+			rate = 165;
+			break;
+		case 'Drax':
+			rate = 150;
+			break;
+		case 'Falcon':
+			rate = 150;
+			break;
+		case 'Gamora':
+			rate = 150;
+			break;
+		case 'Groot':
+			rate = 180;
+			break;
+		case 'Iron Man':
+			rate = 150;
+			break;
+		case 'Loki':
+			rate = 150;
+			break;
+		case 'Mantis':
+			rate = 165;
+			break;
+		case 'Nebula':
+			rate = 180;
+			break;
+		case 'Nova':
+			rate = 180;
+			break;
+		case 'Rocket':
+			rate = 150;
+			break;
+		case 'Star Lord':
+			rate = 150;
+			break;
+		default:
+			break;
+	}
+	if(rank < 14 && rank > 6){
+		rate -= 15 * Math.ceil((rank - 6)/4);
+	}
+	return rate;
+}
+
+function getType(fighter, costume) {
+	// Poison: 1, Quick: 2, Strong 3, AdvPoison: 4, AdvQuick: 5, AdvStrong: 6, Ult: 7
+	switch(fighter){
+		case 'Captain America':
+			return 7;
+			break;
+		case 'Collector':
+			return 3;
+			break;
+		case 'Drax':
+			return 1;
+			break;
+		case 'Falcon':
+			return 2;
+			break;
+		case 'Gamora':
+			if(costume == 'Galactic') return 6;
+			return 3;
+			break;
+		case 'Groot':
+			return 3;
+			break;
+		case 'Iron Man':
+			return 1;
+			break;
+		case 'Loki':
+			return 3;
+			break;
+		case 'Mantis':
+			return 1;
+			break;
+		case 'Nebula':
+			return 2;
+			break;
+		case 'Nova':
+			return 1;
+			break;
+		case 'Rocket':
+			return 2;
+			break;
+		case 'Star Lord':
+			if(costume == 'Galactic')return 5;
+			return 2;
+			break;
+		default:
+			break;
+	}
+}
+
+function getEnemyHealth(Quadrant,Sector,Difficulty) {
+	switch(Quadrant){
+		case 1:
+			switch(Sector){
+				case 1:
+					if(!Difficulty) return 1800;
+					return null;
+					break;
+				case 2:
+					if(!Difficulty) return 2400;
+					return null;
+					break;
+				case 3:
+					if(!Difficulty) return 300;
+					return null;
+					break;
+				case 4:
+					if(!Difficulty) return 3600;
+					return null;
+					break;
+				case 5:
+					if(!Difficulty) return 4800;
+					return null;
+					break;
+				case 6:
+					if(!Difficulty) return 5400;
+					return null;
+					break;
+				case 7:
+					if(!Difficulty) return 7200;
+					return null;
+					break;
+				case 8:
+					if(!Difficulty) return 9000;
+					return null;
+					break;
+			}
+			break;
+		case 2:
+			switch(Sector){
+				case 1:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 2:
+					if(!Difficulty) return 13500;
+					return null;
+					break;
+				case 3:
+					if(!Difficulty) return 14400;
+					return null;
+					break;
+				case 4:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 5:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 6:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 7:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 8:
+					if(!Difficulty) return null;
+					return null;
+					break;
+			}
+			break;
+		case 3:
+			switch(Sector){
+				case 1:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 2:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 3:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 4:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 5:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 6:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 7:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 8:
+					if(!Difficulty) return null;
+					return null;
+					break;
+			}
+			break;
+	}
+}
+
+function getEnemyType(Quadrant,Sector,Difficulty) {
+	// Poison: 1, Quick: 2, Strong 3, AdvPoison: 4, AdvQuick: 5, AdvStrong: 6, Ult: 7
+	switch(Quadrant){
+		case 1:
+			switch(Sector){
+				case 1:
+					if(!Difficulty) return 1;
+					return 3;
+					break;
+				case 2:
+					if(!Difficulty) return 2;
+					return 1;
+					break;
+				case 3:
+					if(!Difficulty) return 3;
+					return 2;
+					break;
+				case 4:
+					if(!Difficulty) return 1;
+					return 3;
+					break;
+				case 5:
+					if(!Difficulty) return 2;
+					return 1;
+					break;
+				case 6:
+					if(!Difficulty) return 3;
+					return 2;
+					break;
+				case 7:
+					if(!Difficulty) return 1;
+					return 3;
+					break;
+				case 8:
+					if(!Difficulty) return 2;
+					return 1;
+					break;
+			}
+			break;
+		case 2:
+			switch(Sector){
+				case 1:
+					if(!Difficulty) return 1;
+					return 3;
+					break;
+				case 2:
+					if(!Difficulty) return 2;
+					return 1;
+					break;
+				case 3:
+					if(!Difficulty) return 3;
+					return 2;
+					break;
+				case 4:
+					if(!Difficulty) return 1;
+					return 3;
+					break;
+				case 5:
+					if(!Difficulty) return 2;
+					return 1;
+					break;
+				case 6:
+					if(!Difficulty) return 3;
+					return 2;
+					break;
+				case 7:
+					if(!Difficulty) return 1;
+					return 3;
+					break;
+				case 8:
+					if(!Difficulty) return 2;
+					return 1;
+					break;
+			}
+			break;
+		case 3:
+			switch(Sector){
+				case 1:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 2:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 3:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 4:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 5:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 6:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 7:
+					if(!Difficulty) return null;
+					return null;
+					break;
+				case 8:
+					if(!Difficulty) return null;
+					return null;
+					break;
+			}
+			break;
+	}
+}
+
+
+		// Captain America
+		// Collector
+		// Drax
+		// Falcon
+		// Gamora
+		// Groot
+		// Iron Man
+		// Loki
+		// Mantis
+		// Nebula
+		// Nova
+		// Rocket
+		// Star Lord
+
+
+//    function calc() {
+//    var atk1 = parseInt(document.getElementById('atk1').value);
+//    var atk2 = parseInt(document.getElementById('atk2').value);
+//    var atk3 = parseInt(document.getElementById('atk3').value);
+//    var hp1 = parseInt(document.getElementById('hp1').value);
+//    var hp2 = parseInt(document.getElementById('hp2').value);
+//    var hp3 = parseInt(document.getElementById('hp3').value);
+// var pa1 = parseInt(document.getElementById('pa1').value);
+//    var pa2 = parseInt(document.getElementById('pa2').value);
+//    var pa3 = parseInt(document.getElementById('pa3').value);
+// var bossAtk = parseInt(document.getElementById('bossAtk').value);
+//    var bossHP = parseInt(document.getElementById('bossHP').value);
+
+// var adv1 = document.getElementById("adv1").checked;
+// var adv2 = document.getElementById("adv2").checked;
+// var adv3 = document.getElementById("adv3").checked;
+// var advBoss = document.getElementById("advBoss").checked;
+// if (adv1) {atk1 = atk1 * 2}
+// if (adv2) {atk2 = atk2 * 2}
+// if (adv3) {atk3 = atk3 * 2}
+// if (advBoss) {bossAtk = bossAtk * 2}
+    	
+// var teamAtk = atk1 + atk2 + atk3;
+//      var teamHP = hp1 + hp2 + hp3;
+//      var teamHP20 = 0.2 * teamHP;
+//      document.getElementById('teamAtk').innerHTML = teamAtk;
+//      document.getElementById('teamHP').innerHTML = teamHP;
+//   document.getElementById('teamHP20').innerHTML = teamHP20;
+
+
+// 		var hitBossLast , hitBossFirst, dmgBossLast, dmgBossFirst, fightsBossLast, fightsBossFirst;
+		
+  
+  
+
+//      if (teamHP != 0) {
+// 	hitBossLast = Math.ceil(teamHP20 / bossAtk);
+// 	hitBossFirst = hitBossLast - 1;
+// 		if (pa1 > hitBossLast) {
+// 			pa1 = hitBossLast
+// 		}
+// 		if (pa2 > hitBossLast) {
+// 			pa2 = hitBossLast
+// 		}
+// 		if (pa3 > hitBossLast) {
+// 			pa3 = hitBossLast
+// 		}
+		
+// 	dmgBossLast = (hitBossLast * teamAtk)  + (atk1*pa1) + (atk2*pa2) + (atk3*pa3);
+// 	fightsBossLast = Math.ceil(bossHP / dmgBossLast);
+	
+// 	if (pa1 !=0) { pa1 = pa1 + 1}
+// 	if (pa2 !=0) { pa2 = pa2 + 1}
+// 	if (pa3 !=0) { pa3 = pa3 + 1}
+	
+// 	dmgBossFirst = (hitBossFirst * teamAtk) + (atk1*pa1) + (atk2*pa2) + (atk3*pa3);
+// 	fightsBossFirst = Math.ceil(bossHP / dmgBossFirst);
+	
+// 	if (fightsBossFirst !=  1) {
+// 		fightsBossFirst = "No"}
+// 		else {fightsBossFirst = "Yes"}
+// 	if (fightsBossLast != 1) {
+// 		fightsBossLast = "No"}
+// 		else {fightsBossLast = "Yes"}
+  
+//      document.getElementById('hitBossLast').innerHTML = hitBossLast;
+//      document.getElementById('dmgBossLast').innerHTML = dmgBossLast;
+//      document.getElementById('fightsBossLast').innerHTML = fightsBossLast;
+//      document.getElementById('dmgBossFirst').innerHTML = dmgBossFirst;
+//      document.getElementById('fightsBossFirst').innerHTML = fightsBossFirst;
+//      }
+//      return false;
+//    }
