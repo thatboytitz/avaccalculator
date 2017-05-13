@@ -918,7 +918,7 @@ function getEnemyType(Quadrant,Sector,Difficulty) {
 
 function setCookie(c_name,value,expireminutes){
    var exdate=new Date();
-   exdate.setMinutes(exdate.getMinutes()+(expireminutes * 10 * 365 * 24 * 60) );
+   exdate.setMinutes(exdate.getMinutes()+expireminutes);
    document.cookie=c_name+ "=" +escape(value)+
    ((expireminutes==null) ? "" : ";expires="+exdate.toUTCString());
 }
@@ -950,7 +950,7 @@ function Save(){
 	}
 	var myJsonString = JSON.stringify(heroRanks);
 	console.log(myJsonString);
-	setCookie("HeroData",myJsonString,1);
+	setCookie("HeroData",myJsonString,25600);
 }
 
 function onLoad() {
