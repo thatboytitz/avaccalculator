@@ -4,6 +4,7 @@
 	<title>AvAc Starmap Calculator</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<style type="text/css">
 		hr {
 			border-color: #000000 -moz-use-text-color #FFFFFF;
@@ -106,7 +107,7 @@
 				<div class="col-sm-4 col-lg-3 checkbox">
 					<br><br>
 					<label>
-						<input type="checkbox" id="Difficulty"> <p>Hard</p>
+						<input type="checkbox" id="Difficulty"> <p>Heroic</p>
 					</label>
 				</div>
 			</div>
@@ -121,10 +122,10 @@
 			<div class="row">
 				<div class="col-sm-3 col-lg-2"><p>Captain America</p></div>
 				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="CaptainAmericaAtk">Attack:</label><input id="CaptainAmericaAtk" type="number" class="alert-info form-control" value="1" min="1" max="14" required />					
+					<label for="CaptainAmericaAtk">Attack:</label><input id="CaptainAmericaAtk" type="number" class="alert-danger form-control" value="1" min="1" max="14" required />					
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="CapHth">Health:</label><input id="CaptainAmericaHth" type="number" class="alert-info form-control" value="1" min="1" max="14" required/>					
+					<label for="CapHth">Health:</label><input id="CaptainAmericaHth" type="number" class="alert-danger form-control" value="1" min="1" max="14" required/>					
 				</div>
 			</div>
 			<hr style="border-top: 1px solid #000000 !important; " />
@@ -132,10 +133,10 @@
 			<div class="row">
 				<div class="col-sm-3 col-lg-2"><p>Collector</p></div>
 				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="CollectorAtk">Attack:</label><input id="CollectorAtk" type="number" class="alert-info form-control" value="1" min="1" max="14" required />					
+					<label for="CollectorAtk">Attack:</label><input id="CollectorAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="CollectorHth">Health:</label><input id="CollectorHth" type="number" class="alert-info form-control" value="1" min="1" max="14" required/>					
+					<label for="CollectorHth">Health:</label><input id="CollectorHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
 				</div>
 			</div>
 			<hr style="border-top: 1px solid #000000 !important; " />
@@ -147,6 +148,17 @@
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
 					<label for="DraxHth">Health:</label><input id="DraxHth" type="number" class="alert-success form-control" value="1" min="1" max="14" required/>					
+				</div>
+			</div>
+			<hr style="border-top: 1px solid #000000 !important; " />
+
+			<div class="row">
+				<div class="col-sm-3 col-lg-2"><p>Falcon</p></div>
+				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
+					<label for="FalconAtk">Attack:</label><input id="FalconAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
+				</div>
+				<div class="form-inline col-sm-3 col-lg-3">
+					<label for="FalconHth">Health:</label><input id="FalconHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
 				</div>
 			</div>
 			<hr style="border-top: 1px solid #000000 !important; " />
@@ -204,17 +216,6 @@
 			<hr style="border-top: 1px solid #000000 !important; " />
 
 			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Falcon</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="FalconAtk">Attack:</label><input id="FalconAtk" type="number" class="alert-info form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="FalconHth">Health:</label><input id="FalconHth" type="number" class="alert-info form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
 				<div class="col-sm-3 col-lg-2"><p>Loki</p></div>
 				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
 					<label for="LokiAtk">Attack:</label><input id="LokiAtk" type="number" class="alert-warning form-control" value="1" min="1" max="14" required />					
@@ -239,10 +240,10 @@
 			<div class="row">
 				<div class="col-sm-3 col-lg-2"><p>Nebula</p></div>
 				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="NebulaAtk">Attack:</label><input id="NebulaAtk" type="number" class="alert-info form-control" value="1" min="1" max="14" required />					
+					<label for="NebulaAtk">Attack:</label><input id="NebulaAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="NebulaHth">Health:</label><input id="NebulaHth" type="number" class="alert-info form-control" value="1" min="1" max="14" required/>					
+					<label for="NebulaHth">Health:</label><input id="NebulaHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
 				</div>
 			</div>
 			<hr style="border-top: 1px solid #000000 !important; " />
@@ -261,10 +262,10 @@
 			<div class="row">
 				<div class="col-sm-3 col-lg-2"><p>Rocket</p></div>
 				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="RocketAtk">Attack:</label><input id="RocketAtk" type="number" class="alert-info form-control" value="1" min="1" max="14" required />					
+					<label for="RocketAtk">Attack:</label><input id="RocketAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="RocketHth">Health:</label><input id="RocketHth" type="number" class="alert-info form-control" value="1" min="1" max="14" required/>					
+					<label for="RocketHth">Health:</label><input id="RocketHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
 				</div>
 			</div>
 			<hr style="border-top: 1px solid #000000 !important; " />
@@ -279,10 +280,10 @@
 					</select>
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="StarLordAtk">Attack:</label><input id="StarLordAtk" type="number" class="alert-info form-control" value="1" min="1" max="14" required />					
+					<label for="StarLordAtk">Attack:</label><input id="StarLordAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="StarLordAtk">Health:</label><input id="StarLordHth" type="number" class="alert-info form-control" value="1" min="1" max="14" required/>					
+					<label for="StarLordAtk">Health:</label><input id="StarLordHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
 				</div>
 			</div>
 <!-- 			<hr style="border-top: 1px solid #000000 !important; " />
@@ -290,10 +291,10 @@
 			<div class="row">
 				<div class="col-sm-3 col-lg-2"><p>Yondu</p></div>
 				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="YonduAtk">Attack:</label><input id="YonduAtk" type="number" class="alert-info form-control" value="1" min="1" max="14" required />					
+					<label for="YonduAtk">Attack:</label><input id="YonduAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
 				</div>
 				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="YonduHth">Health:</label><input id="YonduHth" type="number" class="alert-info form-control" value="1" min="1" max="14" required/>					
+					<label for="YonduHth">Health:</label><input id="YonduHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
 				</div>
 			</div> -->
 
