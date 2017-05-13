@@ -202,7 +202,8 @@ function calc() {
 }
 
 function getCostume(fighter) {
-	fighter = fighter.replace(/\s+/g, '');
+	console.log("hi")
+;	fighter = fighter.replace(/\s+/g, '');
 	fighter += 'Costume';
 	var f = document.getElementById(fighter);
 	if(f == null) return null;
@@ -969,7 +970,7 @@ function onLoad() {
 			if(obj.costume != null){
 				var HeroCostume = obj.hero + 'Costume';
 				HeroCostume = HeroCostume.replace(/\s+/g, '');
-				document.getElementById(HeroCostume).value = obj.health;
+				document.getElementById(HeroCostume).value = obj.costume;
 			}
 		}
 	}
