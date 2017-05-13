@@ -639,7 +639,7 @@ function getEnemyHealth(Quadrant,Sector,Difficulty) {
 					return null;
 					break;
 				case 7:
-					if(!Difficulty) return null;
+					if(!Difficulty) return 30600;
 					return null;
 					break;
 				case 8:
