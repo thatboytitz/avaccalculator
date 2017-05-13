@@ -11,6 +11,22 @@ function calc() {
 	var Quadrant = parseInt(e.options[e.selectedIndex].text);
 	e = document.getElementById("Sector");
 	var Sector = parseInt(e.options[e.selectedIndex].text);
+	var Difficulty = document.getElementById("Difficulty").checked;
+
+	var heroes = [];
+	for (var i = 0; i < document.getElementById("Fighter1").options.length; i++) {
+		heroes.push(document.getElementById("Fighter1").options[i].text);
+	}
+	var heroRanks = [];
+	for (var i = 0; i < heroes.length; i++) {
+		var Costume = getCostume(heroes[i]);
+		var AttackRank = getAttackRank(heroes[i]);
+		var HealthRank = getHealthRank(heroes[i]);
+		heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
+	}
+	var myJsonString = JSON.stringify(heroRanks);
+	console.log(myJsonString);
+
 
 	var Costume1 = getCostume(Fighter1);
 	var AttackRank1 = getAttackRank(Fighter1);
@@ -32,85 +48,147 @@ function calc() {
 	var type2 = getType(Fighter2, Costume2);
 	var type3 = getType(Fighter3, Costume3);
 	
-	var EnemyHealth = getEnemyHealth(Quadrant, Sector, false);
-	var EnemyAttack = getEnemyAttack(Quadrant, Sector, false);
-	if(EnemyHealth != null){
-		var EnemyType = getEnemyType(Quadrant, Sector, false);
+	var EnemyHealth = getEnemyHealth(Quadrant, Sector, Difficulty);
+	var EnemyAttack = getEnemyAttack(Quadrant, Sector, Difficulty);
+	if(EnemyHealth != null && EnemyAttack != null){
+		console.log('hi');
+		var EnemyType = getEnemyType(Quadrant, Sector, Difficulty);
 		var turns;
+		var PlayerTurns;
+
+		summary += '<div class=\"row\">';
+		var Fighter1Text = '<div class="col-xs-12 col-md-4"><p>' + Fighter1 + ': ' + atk1;
+		var Fighter2Text = '<div class="col-xs-12 col-md-4"><p>' + Fighter2 + ': ' + atk2;
+		var Fighter3Text = '<div class="col-xs-12 col-md-4"><p>' + Fighter3 + ': ' + atk3;
+
 
 		switch(EnemyType){
 			case 1:
-				if(type1 == 3 || type1 == 4 || type1 == 7) atk1 *= (1 + Quadrant);
-				if(type2 == 3 || type2 == 4 || type2 == 7) atk2 *= (1 + Quadrant);
-				if(type3 == 3 || type3 == 4 || type3 == 7) atk3 *= (1 + Quadrant);
+				if(type1 == 3 || type1 == 4 || type1 == 7) {
+					Fighter1Text += ' x' + (1 + Quadrant) + ' ';
+					atk1 *= (1 + Quadrant);
+				}
+				if(type2 == 3 || type2 == 4 || type2 == 7) {
+					Fighter2Text += ' x' + (1 + Quadrant) + ' ';
+					atk2 *= (1 + Quadrant);
+				}
+				if(type3 == 3 || type3 == 4 || type3 == 7) {
+					Fighter3Text += ' x' + (1 + Quadrant) + ' ';
+					atk3 *= (1 + Quadrant);
+				}
 				break;
 			case 2:
-				if(type1 == 1 || type1 == 5 || type1 == 7) atk1 *= (1 + Quadrant);
-				if(type2 == 1 || type2 == 5 || type2 == 7) atk2 *= (1 + Quadrant);
-				if(type3 == 1 || type3 == 5 || type3 == 7) atk3 *= (1 + Quadrant);
+				if(type1 == 1 || type1 == 5 || type1 == 7){
+					Fighter1Text += ' x' + (1 + Quadrant) + ' ';
+					atk1 *= (1 + Quadrant);
+				}
+				if(type2 == 1 || type2 == 5 || type2 == 7){
+					Fighter2Text += ' x' + (1 + Quadrant) + ' ';
+					atk2 *= (1 + Quadrant);
+				}
+				if(type3 == 1 || type3 == 5 || type3 == 7){
+					Fighter3Text += ' x' + (1 + Quadrant) + ' ';
+					atk3 *= (1 + Quadrant);
+				}
 				break;
 			case 3:
-				if(type1 == 2 || type1 == 6 || type1 == 7) atk1 *= (1 + Quadrant);
-				if(type2 == 2 || type2 == 6 || type2 == 7) atk2 *= (1 + Quadrant);
-				if(type3 == 2 || type3 == 6 || type3 == 7) atk3 *= (1 + Quadrant);
+				if(type1 == 2 || type1 == 6 || type1 == 7){
+					Fighter1Text += ' x' + (1 + Quadrant) + ' ';
+					atk1 *= (1 + Quadrant);
+				}
+				if(type2 == 2 || type2 == 6 || type2 == 7) {
+					Fighter2Text += ' x' + (1 + Quadrant) + ' ';
+					atk2 *= (1 + Quadrant);
+				}
+				if(type3 == 2 || type3 == 6 || type3 == 7){
+					Fighter3Text += ' x' + (1 + Quadrant) + ' ';
+					atk3 *= (1 + Quadrant);	
+				} 
 				break;
 		}
-		summary += '<div class=\"row\">';
-		summary += '<div class="col-sm-4 col-lg-3"><p>' + Fighter1 + ': ' + atk1 + ' / ' + hth1 + '</p></div>';
-		summary += '<div class="col-sm-4 col-lg-3"><p>' + Fighter2 + ': ' + atk2 + ' / ' + hth2 + '</p></div>';
-		summary += '<div class="col-sm-4 col-lg-3"><p>' + Fighter3 + ': ' + atk3 + ' / ' + hth3 + '</p></div>';
-		summary += '</div>';
-		summary += '<div class=\"row\">';
-		summary += '<div class="col-sm-4 col-lg-3"><p> Damage Per Round:' + EnemyAttack + '</p></div>';
-		summary += '<div class="col-sm-4 col-lg-3"><p> Enemy Health:' + EnemyHealth + '</p></div>';
-		summary += '</div>';
+		Fighter1Text += ' / ' + hth1 + '</p></div>';
+		Fighter2Text += ' / ' + hth2 + '</p></div>';
+		Fighter3Text += ' / ' + hth3 + '</p></div>';
+
+		summary += Fighter1Text + Fighter2Text + Fighter3Text + '</div>';
 
 		var totalAtk = atk1 + atk2 + atk3;
+		var totalHth = hth1 + hth2 + hth3;
 
-		if(EnemyAttack / (hth1 + hth2 + hth3) < .2){
-			if(totalAtk >= (EnemyHealth/2)){
-					summary += '<img src="star.png"><img src="star.png"><img src="star.png"><br><p>If RNG Allows!';
+		summary += '<div class=\"row\">';
+		summary += '<div class="col-xs-12 col-md-4"><p> Total Attack per Round:' + totalAtk + '</p></div>';
+		summary += '<div class="col-xs-12 col-md-4"><p> Total Health:' + totalHth + '</p></div>';
+		summary += '</div>';
+
+
+		summary += '<div class=\"row\">';
+		summary += '<div class="col-xs-12 col-md-4"><p> Damage Per Round:' + EnemyAttack + '</p></div>';
+		summary += '<div class="col-xs-12 col-md-4"><p> Enemy Health:' + EnemyHealth + '</p></div>';
+		summary += '</div><br><br>';
+
+		if((EnemyAttack / totalHth) <= .2){
+			turns = EnemyAttack / totalHth;
+			PlayerTurns = Math.ceil(EnemyHealth/totalAtk);
+			if(PlayerTurns < Math.ceil(.2 / turns)){
+				console.log('turns: ' + Math.ceil(.2 / turns) + ' PTurns:' + PlayerTurns);
+				summary += '<img src="star.png"><img src="star.png"><img src="star.png"><br><br><br><p>You have enough Health and Attack to not worry about it!</p>';
+			}
+			else if(PlayerTurns == Math.ceil(.2 / turns)){
+				summary += '<img src="star.png"><img src="star.png"><img src="star.png"><br><br><br><p>If RNG allows, you\'ll get those 3 stars!</p>';
+			}
+			else if(PlayerTurns == 2 && (.2 / turns) == 1){
+				summary += '<img src="star.png"><img src="star.png"><img src="star.png"><br><br><br><p>If RNG allows, you\'ll get those 3 stars!</p>';
+			}
+			else if(PlayerTurns < Math.ceil(.5 / turns)){
+				summary += '<img src="star.png"><img src="star.png"><br><br><br><p>You have enough Health to withstand 1 hit for the 3 stars but your attack is too low.</p>';
+			}
+			else if(PlayerTurns == Math.ceil(.5 / turns)){
+				summary += '<img src="star.png"><img src="star.png"><br><br><br><p>You have enough Health to withstand 1 hit for the 3 stars but your attack is too low. If RNG allows, you\'ll get 2 stars.</p>';
+			}
+			else if(PlayerTurns < Math.ceil(1 / turns)){
+				summary += '<img src="star.png"><br><br><br><p>You have enough Health to withstand 1 hit for the 3 stars but your attack is too low!</p>';
+			}
+			else if(PlayerTurns == Math.ceil(1 / turns)){
+				summary += '<img src="star.png"><br><br><br><p>You have enough Health to withstand 1 hit for the 3 stars but your attack is too low! You might lose depending on RNG!</p>';
 			}
 			else{
-				turns = (EnemyAttack / (hth1 + hth2 + hth3));
-				if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(.2 / turns))){
-					summary += '<img src="star.png"><img src="star.png"><img src="star.png"><br><p>If RNG Allows!';
-				}
-				else if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(.5 / turns))){
-					summary += '<img src="star.png"><img src="star.png"><br>';
-				}
-				else if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(1 / turns))){
-					summary += '<img src="star.png"><br>';
-				}
-				else{
-					summary += '<h1>0 Stars</h1>';
-				}
-
+				summary += '<h1>0 Stars</h1><br><br><br><p>You have enough Health to withstand 1 hit for the 3 stars but your attack is way too low!</p>';
 			}
 		}
-		else if(EnemyAttack / (hth1 + hth2 + hth3) < .5) {
-			turns = (EnemyAttack / (hth1 + hth2 + hth3));
-			if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(.5 / turns))){
-				summary += '<img src="star.png"><img src="star.png"><br>';
+		else if(EnemyAttack / totalHth <= .5) {
+			turns = EnemyAttack / totalHth;
+			PlayerTurns = Math.ceil(EnemyHealth/totalAtk);
+			if(PlayerTurns < Math.ceil(.5 / turns) + 1){
+				summary += '<img src="star.png"><img src="star.png"><br><br><br><p>You don\'t have enough Health to withstand 1 hit for the 3 stars. You need ' + ((EnemyAttack/.2) - totalHth) + ' more Health</p>';
 			}
-			else if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(1 / turns))){
-				summary += '<img src="star.png"><br>';
+			else if(PlayerTurns == Math.ceil(.5 / turns) + 1){
+				summary += '<img src="star.png"><img src="star.png"><br><br><br><p>You don\'t have enough Health to withstand 1 hit for the 3 stars. You need ' + ((EnemyAttack/.2) - totalHth) + ' more Health. If RNG allows, you\'ll get 2 stars.</p>';
+			}
+			else if(PlayerTurns < Math.ceil(1 / turns) + 1){
+				summary += '<img src="star.png"><br><br><br><p>You\'ll survive!</p>';
+			}
+			else if(PlayerTurns == Math.ceil(1 / turns) + 1){
+				summary += '<img src="star.png"><br><br><br><p>You might lose depending on RNG!</p>';
 			}
 			else{
-				summary += '<h1>0 Stars</h1>';
+				summary += '<h1>0 Stars</h1><br><br><br><p>Abort! You don\'t have enough attack to survive</p>';
 			}			
 		}
-		else if(EnemyAttack / (hth1 + hth2 + hth3) < 1) {
-			turns = (EnemyAttack / (hth1 + hth2 + hth3));
-			if(atk1 + atk2 + atk3 > (EnemyHealth / Math.ceil(1 / turns))){
-				summary += '<img src="star.png"><br>';
+		else if(EnemyAttack / totalHth < 1) {
+			turns = EnemyAttack / totalHth;
+			PlayerTurns = Math.ceil(EnemyHealth/totalAtk);
+			if(PlayerTurns > Math.ceil(1 / turns) + 1){
+				summary += '<img src="star.png"><br><br><br><p>You\'ll survive!</p>';
+			}
+			else if(PlayerTurns == Math.ceil(1 / turns) + 1){
+				summary += '<img src="star.png"><br><br><br><p>You might lose depending on RNG!</p>';
 			}
 			else{
-				summary += '<h1>0 Stars</h1>';
-			}			
+				summary += '<h1>0 Stars</h1><br><br><br><p>Abort! You don\'t have enough attack to survive</p>';
+			}				
 		}
 		else {
-			summary += '<h1>0 Stars</h1>';
+			summary += '<h1>0 Stars</h1><br><br><br><p>Don\'t even try with this combination</p>';
 		}
 	}
 	else{
@@ -552,7 +630,7 @@ function getEnemyHealth(Quadrant,Sector,Difficulty) {
 					return null;
 					break;
 				case 5:
-					if(!Difficulty) return null;
+					if(!Difficulty) return 20700;
 					return null;
 					break;
 				case 6:
@@ -564,7 +642,7 @@ function getEnemyHealth(Quadrant,Sector,Difficulty) {
 					return null;
 					break;
 				case 8:
-					if(!Difficulty) return null;
+					if(!Difficulty) return 32400;
 					return null;
 					break;
 			}
@@ -616,7 +694,7 @@ function getEnemyAttack(Quadrant,Sector,Difficulty) {
 			switch(Sector){
 				case 1:
 					if(!Difficulty) return 360;
-					return null;
+					return 2951;
 					break;
 				case 2:
 					if(!Difficulty) return 480;
@@ -851,3 +929,5 @@ function getEnemyType(Quadrant,Sector,Difficulty) {
 // Nova
 // Rocket
 // Star Lord
+
+//https://gist.github.com/zyphlar/3831934
