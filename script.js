@@ -917,11 +917,10 @@ function getEnemyType(Quadrant,Sector,Difficulty) {
 }
 
 function setCookie(c_name,value,expireminutes){
-    var d = new Date();
-    d.setTime(d.getTime() + (expireminutes * 10 * 365 * 24 * 60 * 60));
-    var expires = "expires="+d.toUTCString();
+   var exdate=new Date();
+   exdate.setMinutes(exdate.getMinutes()+(expireminutes * 10 * 365 * 24 * 60) );
    document.cookie=c_name+ "=" +escape(value)+
-   ((expireminutes==null) ? "" : ";expires="+expires)+ ";path=/";
+   ((expireminutes==null) ? "" : ";expires="+exdate.toUTCString());
 }
 
 function getCookie(c_name){
