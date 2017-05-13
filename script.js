@@ -921,7 +921,7 @@ function setCookie(c_name,value,expireminutes){
     d.setTime(d.getTime() + (expireminutes * 10 * 365 * 24 * 60 * 60));
     var expires = "expires="+d.toUTCString();
    document.cookie=c_name+ "=" +escape(value)+
-   ((expireminutes==null) ? "" : ";expires="+d);
+   ((expireminutes==null) ? "" : ";expires="+expires);
 }
 
 function getCookie(c_name){
