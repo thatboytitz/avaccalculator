@@ -915,6 +915,67 @@ function getEnemyType(Quadrant,Sector,Difficulty) {
 	}
 }
 
+function setCookie(c_name,value,expireminutes){
+   var exdate=new Date();
+   exdate.setMinutes(exdate.getMinutes()+expireminutes);
+   document.cookie=c_name+ "=" +escape(value)+
+   ((expireminutes==null) ? "" : ";expires="+exdate.toUTCString());
+}
+
+function getCookie(c_name){
+	if (document.cookie.length>0){
+		c_start=document.cookie.indexOf(c_name + "=");
+		if (c_start!=-1){
+			c_start=c_start + c_name.length+1;
+			c_end=document.cookie.indexOf(";",c_start);
+			if (c_end==-1) c_end=document.cookie.length;
+			return unescape(document.cookie.substring(c_start,c_end));
+		}
+	}
+	return "";
+}
+
+function Save(){
+	var heroes = [];
+	for (var i = 0; i < document.getElementById("Fighter1").options.length; i++) {
+		heroes.push(document.getElementById("Fighter1").options[i].text);
+	}
+	var heroRanks = [];
+	for (var i = 0; i < heroes.length; i++) {
+		var Costume = getCostume(heroes[i]);
+		var AttackRank = getAttackRank(heroes[i]);
+		var HealthRank = getHealthRank(heroes[i]);
+		heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
+	}
+	var myJsonString = JSON.stringify(heroRanks);
+	console.log(myJsonString);
+	setCookie("HeroData",myJsonString,1);
+}
+
+function onLoad() {
+// load values from cookie
+	var cookie = getCookie("HeroData");
+	if(cookie.length > 10){
+		var retval = JSON.parse(cookie);
+		//alert(retval.length);
+		for(var i=0;i<retval.length;i++) {
+			var obj = retval[i];
+			var HeroAtk = obj.hero + 'Atk';
+			var HeroHth = obj.hero + 'Hth';
+			HeroAtk = HeroAtk.replace(/\s+/g, '');
+			HeroHth = HeroHth.replace(/\s+/g, '');
+			document.getElementById(HeroAtk).value = obj.attack;
+			document.getElementById(HeroHth).value = obj.health;
+			if(obj.costume != null){
+				var HeroCostume = obj.hero + 'Costume';
+				HeroCostume = HeroCostume.replace(/\s+/g, '');
+				document.getElementById(HeroCostume).value = obj.health;
+			}
+		}
+	}
+}
+
+
 
 // Captain America
 // Collector
@@ -929,5 +990,3 @@ function getEnemyType(Quadrant,Sector,Difficulty) {
 // Nova
 // Rocket
 // Star Lord
-
-//https://gist.github.com/zyphlar/3831934
