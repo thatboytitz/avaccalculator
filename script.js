@@ -616,18 +616,18 @@ function getEnemyHealth(Quadrant,Sector,Difficulty) {
 			switch(Sector){
 				case 1:
 					if(!Difficulty) return 10800;
-					return null;
+					return 32400;
 					break;
 				case 2:
 					if(!Difficulty) return 13500;
-					return null;
+					return 36000;
 					break;
 				case 3:
 					if(!Difficulty) return 14400;
-					return null;
+					return 40500;
 					break;
 				case 4:
-					if(!Difficulty) return null;
+					if(!Difficulty) return 17100;
 					return null;
 					break;
 				case 5:
@@ -635,7 +635,7 @@ function getEnemyHealth(Quadrant,Sector,Difficulty) {
 					return null;
 					break;
 				case 6:
-					if(!Difficulty) return null;
+					if(!Difficulty) return 27000;
 					return null;
 					break;
 				case 7:
@@ -695,27 +695,27 @@ function getEnemyAttack(Quadrant,Sector,Difficulty) {
 			switch(Sector){
 				case 1:
 					if(!Difficulty) return 360;
-					return 2951;
+					return 3000;
 					break;
 				case 2:
 					if(!Difficulty) return 480;
-					return 3450;
+					return 3500;
 					break;
 				case 3:
 					if(!Difficulty) return 600;
-					return null;
+					return 4050;
 					break;
 				case 4:
 					if(!Difficulty) return 720;
-					return null;
+					return 4800;
 					break;
 				case 5:
 					if(!Difficulty) return 960;
-					return null;
+					return 2400;
 					break;
 				case 6:
 					if(!Difficulty) return 1080;
-					return null;
+					return 4045;
 					break;
 				case 7:
 					if(!Difficulty) return 1440;
@@ -731,15 +731,15 @@ function getEnemyAttack(Quadrant,Sector,Difficulty) {
 			switch(Sector){
 				case 1:
 					if(!Difficulty) return 1440;
-					return null;
+					return 4300;
 					break;
 				case 2:
 					if(!Difficulty) return 1800;
-					return null;
+					return 4767;
 					break;
 				case 3:
 					if(!Difficulty) return 1850;
-					return null;
+					return 5350;
 					break;
 				case 4:
 					if(!Difficulty) return 2220;
@@ -917,11 +917,10 @@ function getEnemyType(Quadrant,Sector,Difficulty) {
 }
 
 function setCookie(c_name,value,expireminutes){
-    var d = new Date();
-    d.setTime(d.getTime() + (expireminutes * 10 * 365 * 24 * 60 * 60));
-    var expires = "expires="+d.toUTCString();
+   var exdate=new Date();
+   exdate.setMinutes(exdate.getMinutes()+expireminutes);
    document.cookie=c_name+ "=" +escape(value)+
-   ((expireminutes==null) ? "" : ";expires="+expires);
+   ((expireminutes==null) ? "" : ";expires="+exdate.toUTCString());
 }
 
 function getCookie(c_name){
@@ -951,7 +950,7 @@ function Save(){
 	}
 	var myJsonString = JSON.stringify(heroRanks);
 	console.log(myJsonString);
-	setCookie("HeroData",myJsonString,1);
+	setCookie("HeroData",myJsonString,25600);
 }
 
 function onLoad() {
