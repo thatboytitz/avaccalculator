@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AvAc Starmap Calculator</title>
+	<title>AvAc Calculator</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -10,303 +10,112 @@
 			border-color: #000000 -moz-use-text-color #FFFFFF;
   			border-width: 1px 0;
 		}
+		result1 {
+			background-color: rgba(211, 228, 255, 0.8);
+		}
 	</style>
 </head>
 <body onload="onLoad()">
+	<br>
 	<div class="container">
-		<h1>Avengers Academy Starmap Calculator</h1><br>
 		<div class="jumbotron">
-			<div class="row">	
-				<div class="col-xs-12 col-md-4"><p>Input information below</p>
-				</div>	
-				<div class="col-xs-12 col-md-4"><a href="https://docs.google.com/spreadsheets/d/1Oq6P3-h1QwB0cYs0L63unA-mDf6nIBKZYwoKmyHSeDE/edit#gid=0"><p>Event Spreadsheet</p></a>
-				</div>
-				<div class="col-xs-12 col-md-4"><a href="http://whistend.byethost13.com/calculator.html"><p>Universal Calculator</p></a>
-				</div>
-			</div>
-			<br><br><br>
+			<h1>Avengers Academy Calculator</h1><br>
+			<a href="https://docs.google.com/spreadsheets/d/1Oq6P3-h1QwB0cYs0L63unA-mDf6nIBKZYwoKmyHSeDE/edit#gid=0"><p>Event Spreadsheet</p></a>
+			<br><br>
 			<div class="row">
-				<div class="col-sm-4 col-lg-3">
-					<p>Fighter 1</p>
-					<select class="form-control" id="Fighter1">
-						<option>Captain America</option>
-						<option class="alert-warning">Collector</option>
-						<option class="alert-success">Drax</option>
-						<option class="alert-speed">Falcon</option>
-						<option class="alert-warning">Gamora</option>
-						<option class="alert-warning">Groot</option>
-						<option class="alert-success">Iron Man</option>
-						<option class="alert-warning">Loki</option>
-						<option class="alert-success">Mantis</option>
-						<option class="alert-speed">Nebula</option>
-						<option class="alert-success">Nova</option>
-						<option class="alert-speed">Rocket</option>
-						<option class="alert-speed">Star Lord</option>
+				<div class="col-xs-8 col-lg-3">
+					<label for="basic-url">Fighter 1</label>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
+						<input type="text" class="form-control" id="hp1" value="0" aria-describedby="basic-addon3">
+					</div>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Attack </sADVn>
+						<input type="text" class="form-control" id="atk1" value="0" aria-describedby="basic-addon3">
+					</div>
+				</div>
+				<div class="col-xs-4 col-lg-1">
+					<label for="basic-url">ADV</label>
+					<select id="adv1" class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
 					</select>
 				</div>
-				<div class="col-sm-4 col-lg-3">
-					<p>Fighter 2</p>
-					<select class="form-control" id="Fighter2">
-						<option>Captain America</option>
-						<option class="alert-warning">Collector</option>
-						<option class="alert-success">Drax</option>
-						<option class="alert-speed">Falcon</option>
-						<option class="alert-warning">Gamora</option>
-						<option class="alert-warning">Groot</option>
-						<option class="alert-success">Iron Man</option>
-						<option class="alert-warning">Loki</option>
-						<option class="alert-success">Mantis</option>
-						<option class="alert-speed">Nebula</option>
-						<option class="alert-success">Nova</option>
-						<option class="alert-speed">Rocket</option>
-						<option class="alert-speed">Star Lord</option>
+				<div class="col-xs-8 col-lg-3">
+					<label for="basic-url">Fighter 2</label>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
+						<input type="text" class="form-control" id="hp2" value="0"  aria-describedby="basic-addon3">
+					</div>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Attack </sADVn>
+						<input type="text" class="form-control" id="atk2" value="0" aria-describedby="basic-addon3">
+					</div>
+				</div>
+				<div class="col-xs-4 col-lg-1">
+					<label for="basic-url">ADV</label>
+					<select id="adv2" class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
 					</select>
 				</div>
-				<div class="col-sm-4 col-lg-3">
-					<p>Fighter 3</p>
-					<select class="form-control" id="Fighter3">
-						<option>Captain America</option>
-						<option class="alert-warning">Collector</option>
-						<option class="alert-success">Drax</option>
-						<option class="alert-speed">Falcon</option>
-						<option class="alert-warning">Gamora</option>
-						<option class="alert-warning">Groot</option>
-						<option class="alert-success">Iron Man</option>
-						<option class="alert-warning">Loki</option>
-						<option class="alert-success">Mantis</option>
-						<option class="alert-speed">Nebula</option>
-						<option class="alert-success">Nova</option>
-						<option class="alert-speed">Rocket</option>
-						<option class="alert-speed">Star Lord</option>
+				<div class="col-xs-8 col-lg-3">
+					<label for="basic-url">Fighter 3</label>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
+						<input type="text" class="form-control" id="hp3" value="0" aria-describedby="basic-addon3">
+					</div>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Attack </sADVn>
+						<input type="text" class="form-control" id="atk3" value="0" aria-describedby="basic-addon3">
+					</div>
+				</div>
+				<div class="col-xs-4 col-lg-1">
+					<label for="basic-url">ADV</label>
+					<select id="adv3" class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
 					</select>
 				</div>
 			</div>
 			<br><br>
 			<div class="row">
-				<div class="col-sm-4 col-lg-3">
-					<p>Quadrant</p>
-					<select class="form-control" id="Quadrant">
+				<div class="col-xs-8 col-md-3">
+					<label for="basic-url">Boss</label>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
+						<input type="text" class="form-control" id="bossHP" value="0"  aria-describedby="basic-addon3">
+					</div>
+					<div class="input-group">
+						<sADVn class="input-group-addon" id="basic-addon3">Attack</sADVn>
+						<input type="text" class="form-control" id="bossAtk" value="0" aria-describedby="basic-addon3">
+					</div>
+				</div>
+				<div class="col-xs-4 col-lg-1">
+					<label for="basic-url">ADV</label>
+					<select id="advBoss" class="form-control">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
-					</select>					
-				</div>
-				<div class="col-sm-4 col-lg-3">
-					<p>Sector</p>
-					<select class="form-control" id="Sector">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-					</select>					
-				</div>
-				<div class="col-sm-4 col-lg-3 checkbox">
-					<br><br>
-					<label>
-						<input type="checkbox" id="Difficulty"> <p>Heroic</p>
-					</label>
-				</div>
+					</select>
+				</div>				
 			</div>
 			<br><br>
 			<button class="btn" onclick="calc()">Check it Out</button>
 		</div>
-		<div id="summary">
-		</div>
-		<div class="jumbotron">
-			<form>
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Captain America</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="CaptainAmericaAtk">Attack:</label><input id="CaptainAmericaAtk" type="number" class=" form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="CaptainAmericaHth">Health:</label><input id="CaptainAmericaHth" type="number" class=" form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Collector</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="CollectorAtk">Attack:</label><input id="CollectorAtk" type="number" class="alert-warning form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="CollectorHth">Health:</label><input id="CollectorHth" type="number" class="alert-warning form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Drax</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="DraxAtk">Attack:</label><input id="DraxAtk" type="number" class="alert-success form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="DraxHth">Health:</label><input id="DraxHth" type="number" class="alert-success form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Falcon</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="FalconAtk">Attack:</label><input id="FalconAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="FalconHth">Health:</label><input id="FalconHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Gamora</p></div>
-				<div class="col-sm-3 col-lg-3"><p>
-					<select class="form-control" id="GamoraCostume">
-						<option>None</option>
-						<option>Galactic Assassin</option>
-						<option value="Galactic">Galactic</option>
-					</select>
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="GamoraAtk">Attack:</label><input id="GamoraAtk" type="number" class="alert-warning form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="GamoraHth">Health:</label><input id="GamoraHth" type="number" class="alert-warning form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Groot</p></div>
-				<div class="col-sm-3 col-lg-3"><p>
-					<select class="form-control" id="GrootCostume">
-						<option>None</option>
-						<option>Thor Groot</option>
-					</select>
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="GrootAtk">Attack:</label><input id="GrootAtk" type="number" class="alert-warning form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="GrootHth">Health:</label><input id="GrootHth" type="number" class="alert-warning form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Iron Man</p></div>
-				<div class="col-sm-3 col-lg-3"><p>
-					<select class="form-control" id="IronManCostume">
-						<option>None</option>
-						<option>GodKiller</option>
-					</select>
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="IronManAtk">Attack:</label><input id="IronManAtk" type="number" class="alert-success form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="IronManHth">Health:</label><input id="IronManHth" type="number" class="alert-success form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Loki</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="LokiAtk">Attack:</label><input id="LokiAtk" type="number" class="alert-warning form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="LokiHth">Health:</label><input id="LokiHth" type="number" class="alert-warning form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Mantis</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="MantisAtk">Attack:</label><input id="MantisAtk" type="number" class="alert-success form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="MantisHth">Health:</label><input id="MantisHth" type="number" class="alert-success form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Nebula</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="NebulaAtk">Attack:</label><input id="NebulaAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="NebulaHth">Health:</label><input id="NebulaHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Nova</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="NovaAtk">Attack:</label><input id="NovaAtk" type="number" class="alert-success form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="NovaHth">Health:</label><input id="NovaHth" type="number" class="alert-success form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Rocket</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="RocketAtk">Attack:</label><input id="RocketAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="RocketHth">Health:</label><input id="RocketHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Star Lord</p></div>
-				<div class="col-sm-3 col-lg-3"><p>
-					<select class="form-control" id="StarLordCostume">
-						<option>None</option>
-						<option>Captain</option>
-						<option value="Galactic">Galactic</option>
-					</select>
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="StarLordAtk">Attack:</label><input id="StarLordAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="StarLordAtk">Health:</label><input id="StarLordHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div>
-<!-- 			<hr style="border-top: 1px solid #000000 !important; " />
-
-			<div class="row">
-				<div class="col-sm-3 col-lg-2"><p>Yondu</p></div>
-				<div class="form-inline col-sm-3 col-sm-offset-3 col-lg-3 col-lg-offset-3">
-					<label for="YonduAtk">Attack:</label><input id="YonduAtk" type="number" class="alert-speed form-control" value="1" min="1" max="14" required />					
-				</div>
-				<div class="form-inline col-sm-3 col-lg-3">
-					<label for="YonduHth">Health:</label><input id="YonduHth" type="number" class="alert-speed form-control" value="1" min="1" max="14" required/>					
-				</div>
-			</div> -->
-
-
-			<div class="row col-sm-2"><button type="submit" name="save" id="save" onclick="Save()" class="btn">save</button></div>
-
-
-			</form>
+	</div>
+	<div class="container" id="summary">
+	</div>
+	<div class="container">
+	<div class="well">
+		<div class="embed-responsive embed-responsive-4by3">
+		  <iframe class="embed-responsive-item" src="https://docs.google.com/spreadsheets/d/1Oq6P3-h1QwB0cYs0L63unA-mDf6nIBKZYwoKmyHSeDE/pubhtml?gid=2092035087&amp;single=true&amp;widget=true&amp;headers=false" width="800" height="800" frameborder="0"></iframe>
 		</div>
 	</div>
-
-
+	</div>
   	<!-- <script src="stats.js"></script> eventually I'll clean it up-->
   	<script src="script.js"></script>
 </body>
