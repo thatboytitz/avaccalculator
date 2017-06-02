@@ -29,10 +29,9 @@ function calc() {
 	var AttackRank1, HealthRank1, atk1, hp1, type1;
 	var AttackRank2, HealthRank2, atk2, hp2, type2;
 	var AttackRank3, HealthRank3, atk3, hp3, type3;
-	console.log(Fighter1);
+	console.log(myJsonString);
 
 	if(Fighter1 != 'None'){
-		console.log("hi");
 		AttackRank1 = getAttackRank(Fighter1);
 		HealthRank1 = getHealthRank(Fighter1);
 		Fighter1 = getCostume(Fighter1);
@@ -216,7 +215,6 @@ function calc() {
 			turns = EnemyAttack / totalHP;
 			PlayerTurns = Math.ceil(EnemyHealth/totalAtk);
 			if(PlayerTurns < Math.ceil(.2 / turns)){
-				console.log('turns: ' + Math.ceil(.2 / turns) + ' PTurns:' + PlayerTurns);
 				summary += '<img src="star.png"><img src="star.png"><img src="star.png"><br><br><br><p>You have enough Health and Attack to not worry about it!</p>';
 			}
 			else if(PlayerTurns == Math.ceil(.2 / turns)){
@@ -319,9 +317,9 @@ function getEnemyAttack(Quadrant, Sector, Difficulty) {
 
 function getEnemyType(Quadrant, Sector, Difficulty) {
 	if(!Difficulty){
-		return quadrantType[Quadrant][Sector];
+		return quadrantType[Quadrant-1][Sector-1];
 	}
-	return heroicQuadrantType[Quadrant][Sector];
+	return heroicQuadrantType[Quadrant-1][Sector-1];
 }
 
 
@@ -348,41 +346,41 @@ function getCookie(c_name){
 }
 
 function Save(){
-	// var heroes = [];
-	// for (var i = 0; i < document.getElementById("Fighter1").options.length; i++) {
-	// 	heroes.push(document.getElementById("Fighter1").options[i].text);
-	// }
-	// var heroRanks = [];
-	// for (var i = 0; i < heroes.length; i++) {
-	// 	var Costume = getCostume(heroes[i]);
-	// 	var AttackRank = getAttackRank(heroes[i]);
-	// 	var HealthRank = getHealthRank(heroes[i]);
-	// 	heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
-	// }
-	// var myJsonString = JSON.stringify(heroRanks);
-	// console.log(myJsonString);
-	// setCookie("HeroData",myJsonString,25600);
+	var heroes = [];
+	for (var i = 0; i < document.getElementById("Fighter1").options.length; i++) {
+		heroes.push(document.getElementById("Fighter1").options[i].text);
+	}
+	var heroRanks = [];
+	for (var i = 0; i < heroes.length; i++) {
+		var Costume = getCostume(heroes[i]);
+		var AttackRank = getAttackRank(heroes[i]);
+		var HealthRank = getHealthRank(heroes[i]);
+		heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
+	}
+	var myJsonString = JSON.stringify(heroRanks);
+	console.log(myJsonString);
+	setCookie("HeroData",myJsonString,25600);
 }
 
 function onLoad() {
-// load values from cookie
-	// var cookie = getCookie("HeroData");
-	// if(cookie.length > 10){
-	// 	var retval = JSON.parse(cookie);
-	// 	//alert(retval.length);
-	// 	for(var i=0;i<retval.length;i++) {
-	// 		var obj = retval[i];
-	// 		var HeroAtk = obj.hero + 'Atk';
-	// 		var HeroHP = obj.hero + 'HP';
-	// 		HeroAtk = HeroAtk.replace(/\s+/g, '');
-	// 		HeroHP = HeroHP.replace(/\s+/g, '');
-	// 		document.getElementById(HeroAtk).value = obj.attack;
-	// 		document.getElementById(HeroHP).value = obj.health;
-	// 		if(obj.costume != null){
-	// 			var HeroCostume = obj.hero + 'Costume';
-	// 			HeroCostume = HeroCostume.replace(/\s+/g, '');
-	// 			document.getElementById(HeroCostume).value = obj.costume;
-	// 		}
-	// 	}
-	// }
+	load values from cookie
+	var cookie = getCookie("HeroData");
+	if(cookie.length > 10){
+		var retval = JSON.parse(cookie);
+		//alert(retval.length);
+		for(var i=0;i<retval.length;i++) {
+			var obj = retval[i];
+			var HeroAtk = obj.hero + 'Atk';
+			var HeroHP = obj.hero + 'HP';
+			HeroAtk = HeroAtk.replace(/\s+/g, '');
+			HeroHP = HeroHP.replace(/\s+/g, '');
+			document.getElementById(HeroAtk).value = obj.attack;
+			document.getElementById(HeroHP).value = obj.health;
+			if(obj.costume != null){
+				var HeroCostume = obj.hero + 'Costume';
+				HeroCostume = HeroCostume.replace(/\s+/g, '');
+				document.getElementById(HeroCostume).value = obj.costume;
+			}
+		}
+	}
 }
