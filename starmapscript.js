@@ -20,8 +20,8 @@ function calc() {
 	var heroRanks = [];
 	for (var i = 0; i < heroes.length; i++) {
 		var Costume = getCostume(heroes[i]);
-		var AttackRank = getAttackRank(heroes[i]);
-		var HealthRank = getHealthRank(heroes[i]);
+		var AttackRank = getAttackRank(heroes[i]) + 1;
+		var HealthRank = getHealthRank(heroes[i]) + 1;
 		heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
 	}
 	var myJsonString = JSON.stringify(heroRanks);
@@ -353,8 +353,8 @@ function Save(){
 	var heroRanks = [];
 	for (var i = 0; i < heroes.length; i++) {
 		var Costume = getCostume(heroes[i]);
-		var AttackRank = getAttackRank(heroes[i]);
-		var HealthRank = getHealthRank(heroes[i]);
+		var AttackRank = getAttackRank(heroes[i]) + 1;
+		var HealthRank = getHealthRank(heroes[i]) + 1;
 		heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
 	}
 	var myJsonString = JSON.stringify(heroRanks);
@@ -363,7 +363,7 @@ function Save(){
 }
 
 function onLoad() {
-//load values from cookie
+// load values from cookie
 	var cookie = getCookie("HeroData");
 	if(cookie.length > 10){
 		var retval = JSON.parse(cookie);
