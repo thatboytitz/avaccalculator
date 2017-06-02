@@ -363,7 +363,7 @@ function Save(){
 }
 
 function onLoad() {
-	load values from cookie
+//load values from cookie
 	var cookie = getCookie("HeroData");
 	if(cookie.length > 10){
 		var retval = JSON.parse(cookie);
