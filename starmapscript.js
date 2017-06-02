@@ -347,7 +347,7 @@ function getCookie(c_name){
 
 function Save(){
 	var heroes = [];
-	for (var i = 0; i < document.getElementById("Fighter1").options.length; i++) {
+	for (var i = 1; i < document.getElementById("Fighter1").options.length; i++) {
 		heroes.push(document.getElementById("Fighter1").options[i].text);
 	}
 	var heroRanks = [];
