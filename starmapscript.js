@@ -25,56 +25,60 @@ function calc() {
 		heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
 	}
 	var myJsonString = JSON.stringify(heroRanks);
-	console.log(myJsonString);
 
-	var AttackRank1, HealthRank1, atk1, hp1;
-	var AttackRank2, HealthRank2, atk2, hp2;
-	var AttackRank3, HealthRank3, atk3, hp3;
+	var AttackRank1, HealthRank1, atk1, hp1, type1;
+	var AttackRank2, HealthRank2, atk2, hp2, type2;
+	var AttackRank3, HealthRank3, atk3, hp3, type3;
 	console.log(Fighter1);
 
 	if(Fighter1 != 'None'){
 		console.log("hi");
 		AttackRank1 = getAttackRank(Fighter1);
 		HealthRank1 = getHealthRank(Fighter1);
-		console.log(Fighter1);
 		Fighter1 = getCostume(Fighter1);
-		console.log(Fighter1);
 		atk1 = heroAtk[Fighter1][AttackRank1];
 		hp1 = heroHP[Fighter1][HealthRank1];
+		type1 = heroType[Fighter1];
 	}
 	else{
 		AttackRank1 = 0;
 		HealthRank1 = 0;
 		atk1 = 0;
 		hp1 = 0;
+		type1 = 0;
 	}
 
 	if(Fighter2 != 'None'){
-		var AttackRank2 = getAttackRank(Fighter2);
-		var HealthRank2 = getHealthRank(Fighter2);
+		AttackRank2 = getAttackRank(Fighter2);
+		HealthRank2 = getHealthRank(Fighter2);
 		Fighter2 = getCostume(Fighter2);
-		var atk2 = heroAtk[Fighter2][AttackRank2];
-		var hp2 = heroHP[Fighter2][HealthRank2];
+		atk2 = heroAtk[Fighter2][AttackRank2];
+		hp2 = heroHP[Fighter2][HealthRank2];
+		type2 = heroType[Fighter2];
 	}
 	else {
 		AttackRank2 = 0;
 		HealthRank2 = 0;
 		atk2 = 0;
 		hp2 = 0;
+		type2 = 0;
+		
 	}
 
 	if(Fighter3 != 'None'){
-		var AttackRank3 = getAttackRank(Fighter3);
-		var HealthRank3 = getHealthRank(Fighter3);
+		AttackRank3 = getAttackRank(Fighter3);
+		HealthRank3 = getHealthRank(Fighter3);
 		Fighter3 = getCostume(Fighter3);
-		var atk3 = heroAtk[Fighter3][AttackRank3];
-		var hp3 = heroHP[Fighter3][HealthRank3];
+		atk3 = heroAtk[Fighter3][AttackRank3];
+		hp3 = heroHP[Fighter3][HealthRank3];
+		type3 = heroType[Fighter3];
 	}
 	else {
 		AttackRank3 = 0;
 		HealthRank3 = 0;
 		atk3 = 0;
 		hp3 = 0;
+		type3 = 0;
 	}
 
 	summary += '<div class=\"row\">';
