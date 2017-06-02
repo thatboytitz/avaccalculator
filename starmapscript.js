@@ -204,8 +204,8 @@ function calc() {
 
 
 		summary += '<div class=\"row\">';
-		summary += '<div class="col-xs-12 col-md-4"><p> Damage Per Round:' + EnemyAttack + '</p></div>';
-		summary += '<div class="col-xs-12 col-md-4"><p> Enemy Health:' + EnemyHealth + '</p></div>';
+		summary += '<div class="col-xs-12 col-md-6"><p> Damage Per Round:' + EnemyAttack + '</p></div>';
+		summary += '<div class="col-xs-12 col-md-6"><p> Enemy Health:' + EnemyHealth + '</p></div>';
 		summary += '</div><br><br>';
 
 		if((EnemyAttack / totalHP) <= .2){
