@@ -24,16 +24,16 @@
 					<label for="basic-url">Fighter 1</label>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
-						<input type="text" class="form-control" id="hp1" value="0" aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="hp1" onkeyup="Save()" value="0" aria-describedby="basic-addon3">
 					</div>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Attack </sADVn>
-						<input type="text" class="form-control" id="atk1" value="0" aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="atk1" onkeyup="Save()" value="0" aria-describedby="basic-addon3">
 					</div>
 				</div>
 				<div class="col-xs-4 col-lg-1">
 					<label for="basic-url">ADV</label>
-					<select id="adv1" class="form-control">
+					<select id="adv1" onchange="Save()" class="form-control">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -45,16 +45,16 @@
 					<label for="basic-url">Fighter 2</label>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
-						<input type="text" class="form-control" id="hp2" value="0"  aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="hp2" onkeyup="Save()" value="0"  aria-describedby="basic-addon3">
 					</div>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Attack </sADVn>
-						<input type="text" class="form-control" id="atk2" value="0" aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="atk2" onkeyup="Save()" value="0" aria-describedby="basic-addon3">
 					</div>
 				</div>
 				<div class="col-xs-4 col-lg-1">
 					<label for="basic-url">ADV</label>
-					<select id="adv2" class="form-control">
+					<select id="adv2" onchange="Save()" class="form-control">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -66,16 +66,16 @@
 					<label for="basic-url">Fighter 3</label>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
-						<input type="text" class="form-control" id="hp3" value="0" aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="hp3" onkeyup="Save()" value="0" aria-describedby="basic-addon3">
 					</div>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Attack </sADVn>
-						<input type="text" class="form-control" id="atk3" value="0" aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="atk3" onkeyup="Save()" value="0" aria-describedby="basic-addon3">
 					</div>
 				</div>
 				<div class="col-xs-4 col-lg-1">
 					<label for="basic-url">ADV</label>
-					<select id="adv3" class="form-control">
+					<select id="adv3" onchange="Save()" class="form-control">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -90,19 +90,21 @@
 					<label for="basic-url">Boss</label>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Health</sADVn>
-						<input type="text" class="form-control" id="bossHP" value="0"  aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="bossHP" onkeyup="Save()" value="0"  aria-describedby="basic-addon3">
 					</div>
 					<div class="input-group">
 						<sADVn class="input-group-addon" id="basic-addon3">Attack</sADVn>
-						<input type="text" class="form-control" id="bossAtk" value="0" aria-describedby="basic-addon3">
+						<input type="text" class="form-control" id="bossAtk" onkeyup="Save()" value="0" aria-describedby="basic-addon3">
 					</div>
 				</div>
 				<div class="col-xs-4 col-lg-1">
 					<label for="basic-url">ADV</label>
-					<select id="advBoss" class="form-control">
+					<select id="advBoss" onchange="Save()" class="form-control">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
+						<option>4</option>
+						<option>5</option>
 					</select>
 				</div>				
 			</div>
