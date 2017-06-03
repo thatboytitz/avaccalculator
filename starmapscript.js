@@ -34,7 +34,7 @@ function calc() {
 	if(Fighter1 != 'None'){
 		AttackRank1 = getAttackRank(Fighter1);
 		HealthRank1 = getHealthRank(Fighter1);
-		Fighter1 = getCostume(Fighter1);
+		Fighter1 = getCostume(Fighter1) + Fighter1;
 		atk1 = heroAtk[Fighter1][AttackRank1];
 		hp1 = heroHP[Fighter1][HealthRank1];
 		type1 = heroType[Fighter1];
@@ -50,7 +50,7 @@ function calc() {
 	if(Fighter2 != 'None'){
 		AttackRank2 = getAttackRank(Fighter2);
 		HealthRank2 = getHealthRank(Fighter2);
-		Fighter2 = getCostume(Fighter2);
+		Fighter2 = getCostume(Fighter2) + Fighter2;
 		atk2 = heroAtk[Fighter2][AttackRank2];
 		hp2 = heroHP[Fighter2][HealthRank2];
 		type2 = heroType[Fighter2];
@@ -67,7 +67,7 @@ function calc() {
 	if(Fighter3 != 'None'){
 		AttackRank3 = getAttackRank(Fighter3);
 		HealthRank3 = getHealthRank(Fighter3);
-		Fighter3 = getCostume(Fighter3);
+		Fighter3 = getCostume(Fighter3) + Fighter3;
 		atk3 = heroAtk[Fighter3][AttackRank3];
 		hp3 = heroHP[Fighter3][HealthRank3];
 		type3 = heroType[Fighter3];
@@ -284,8 +284,8 @@ function getCostume(fighter) {
 	fighter = fighter.replace(/\s+/g, '');
 	var fighter_costume = fighter + 'Costume';
 	var f = document.getElementById(fighter_costume);
-	if(f == null || f.options[f.selectedIndex].text == 'None') return fighter;
-	return f.options[f.selectedIndex].text + fighter;
+	if(f == null || f.options[f.selectedIndex].text == 'None') return null;
+	return f.options[f.selectedIndex].text;
 }
 
 function getAttackRank(fighter) {
@@ -373,7 +373,7 @@ function onLoad() {
 			var obj = retval[i];
 			var HeroAtk = obj.hero + 'Atk';
 			var HeroHP = obj.hero + 'HP';
-			HeroAtk = HeroAtk.replace(/\s+/g, '');
+			HeroAtk = Hero Atk.replace(/\s+/g, '');
 			HeroHP = HeroHP.replace(/\s+/g, '');
 			document.getElementById(HeroAtk).value = obj.attack;
 			document.getElementById(HeroHP).value = obj.health;
