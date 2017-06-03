@@ -101,7 +101,16 @@ function calc() {
 		summary += '<p>Please select at least one character</p>'
 	}
 	else if(EnemyHealth == 0 || EnemyAttack == 0){
-		summary += '<p>No Info Available!</p>';
+		summary += '<p>No information is available yet for that sector!</p>';
+	}
+	else if(Fighter1 != 'None' && (atk1 == 0 || hp1 == 0)){
+		summary += '<p>No information is available yet for that Hero\'s level!</p>';
+	}
+	else if(Fighter2 != 'None' && (atk2 == 0 || hp2 == 0)){
+		summary += '<p>No information is available yet for that Hero\'s level!</p>';
+	}
+	else if(Fighter3 != 'None' && (atk3 == 0 || hp3 == 0)){
+		summary += '<p>No information is available yet for that Hero\'s level!</p>';
 	}
 	else{
 		var EnemyType = getEnemyType(Quadrant, Sector, Difficulty);
