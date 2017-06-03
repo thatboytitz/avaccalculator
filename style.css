@@ -3,3 +3,16 @@
     background-color: #CAA2CA;
     border-color: #8A458A;
 }
+
+hr {
+	border-color: #000000 -moz-use-text-color #FFFFFF;
+	border-width: 1px 0;
+}
+
+body {
+	background-image: url("cosmo.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: right bottom;
+	margin-bottom: 200px;
+}

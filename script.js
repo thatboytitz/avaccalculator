@@ -93,57 +93,70 @@ function getCookie(c_name){
 }
 
 function Save(){
-	// var heroes = [];
-	// for (var i = 0; i < document.getElementById("Fighter1").options.length; i++) {
-	// 	heroes.push(document.getElementById("Fighter1").options[i].text);
-	// }
-	// var heroRanks = [];
-	// for (var i = 0; i < heroes.length; i++) {
-	// 	var Costume = getCostume(heroes[i]);
-	// 	var AttackRank = getAttackRank(heroes[i]);
-	// 	var HealthRank = getHealthRank(heroes[i]);
-	// 	heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
-	// }
-	// var myJsonString = JSON.stringify(heroRanks);
-	// console.log(myJsonString);
-	// setCookie("HeroData",myJsonString,25600);
+	var atk1 = parseInt(document.getElementById('atk1').value);
+	var atk2 = parseInt(document.getElementById('atk2').value);
+	var atk3 = parseInt(document.getElementById('atk3').value);
+	var hp1 = parseInt(document.getElementById('hp1').value);
+	var hp2 = parseInt(document.getElementById('hp2').value);
+	var hp3 = parseInt(document.getElementById('hp3').value);
+	var bossAtk = parseInt(document.getElementById('bossAtk').value);
+	var bossHP = parseInt(document.getElementById('bossHP').value);
+
+	e = document.getElementById("adv1");
+	var adv1 = parseInt(e.options[e.selectedIndex].text);
+	e = document.getElementById("adv2");
+	var adv2 = parseInt(e.options[e.selectedIndex].text);
+	e = document.getElementById("adv3");
+	var adv3 = parseInt(e.options[e.selectedIndex].text);
+	e = document.getElementById("advBoss");
+	var advBoss = parseInt(e.options[e.selectedIndex].text);
+
+	var stats = [{
+		"atk1":atk1,
+		"atk2":atk2,
+		"atk3":atk3,
+		"hp1":hp1,
+		"hp2":hp2,
+		"hp3":hp3,
+		"bossAtk":bossAtk,
+		"bossHP":bossHP,
+		"adv1":adv1,
+		"adv2":adv2,
+		"adv3":adv3,
+		"advBoss":advBoss
+	}];
+	var myJsonString = JSON.stringify(stats);
+	console.log(myJsonString);
+	setCookie("UniData",myJsonString,25600);
 }
 
 function onLoad() {
 // load values from cookie
-	// var cookie = getCookie("HeroData");
-	// if(cookie.length > 10){
-	// 	var retval = JSON.parse(cookie);
-	// 	//alert(retval.length);
-	// 	for(var i=0;i<retval.length;i++) {
-	// 		var obj = retval[i];
-	// 		var HeroAtk = obj.hero + 'Atk';
-	// 		var HeroHth = obj.hero + 'Hth';
-	// 		HeroAtk = HeroAtk.replace(/\s+/g, '');
-	// 		HeroHth = HeroHth.replace(/\s+/g, '');
-	// 		document.getElementById(HeroAtk).value = obj.attack;
-	// 		document.getElementById(HeroHth).value = obj.health;
-	// 		if(obj.costume != null){
-	// 			var HeroCostume = obj.hero + 'Costume';
-	// 			HeroCostume = HeroCostume.replace(/\s+/g, '');
-	// 			document.getElementById(HeroCostume).value = obj.costume;
-	// 		}
-	// 	}
-	// }
+	var cookie = getCookie("UniData");
+	if(cookie.length > 3){
+		var retval = JSON.parse(cookie);
+		//alert(retval.length);
+		for(var i=0;i<retval.length;i++) {
+			var obj = retval[i];
+			document.getElementById('atk1').value = obj.atk1;
+			document.getElementById('atk2').value = obj.atk2;
+			document.getElementById('atk3').value = obj.atk3;
+			document.getElementById('hp1').value = obj.hp1;
+			document.getElementById('hp2').value = obj.hp2;
+			document.getElementById('hp3').value = obj.hp3;
+			document.getElementById('bossAtk').value = obj.bossAtk;
+			document.getElementById('bossHP').value = obj.bossHP;
+
+			document.getElementById("adv1").value = obj.adv1;
+			document.getElementById("adv2").value = obj.adv2;
+			document.getElementById("adv3").value = obj.adv3;
+			document.getElementById("advBoss").value = obj.advBoss;
+		
+			// if(obj.costume != null){
+			// 	var HeroCostume = obj.hero + 'Costume';
+			// 	HeroCostume = HeroCostume.replace(/\s+/g, '');
+			// 	document.getElementById(HeroCostume).value = obj.costume;
+			// }
+		}
+	}
 }
-
-
-
-// Captain America
-// Collector
-// Drax
-// Falcon
-// Gamora
-// Groot
-// Iron Man
-// Loki
-// Mantis
-// Nebula
-// Nova
-// Rocket
-// Star Lord
