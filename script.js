@@ -127,13 +127,13 @@ function Save(){
 	}];
 	var myJsonString = JSON.stringify(stats);
 	console.log(myJsonString);
-	setCookie("HeroData",myJsonString,25600);
+	setCookie("UniData",myJsonString,25600);
 }
 
 function onLoad() {
 // load values from cookie
-	var cookie = getCookie("HeroData");
-	if(cookie.length > 10){
+	var cookie = getCookie("UniData");
+	if(cookie.length > 3){
 		var retval = JSON.parse(cookie);
 		//alert(retval.length);
 		for(var i=0;i<retval.length;i++) {
