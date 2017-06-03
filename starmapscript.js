@@ -373,7 +373,7 @@ function onLoad() {
 			var obj = retval[i];
 			var HeroAtk = obj.hero + 'Atk';
 			var HeroHP = obj.hero + 'HP';
-			HeroAtk = Hero Atk.replace(/\s+/g, '');
+			HeroAtk = HeroAtk.replace(/\s+/g, '');
 			HeroHP = HeroHP.replace(/\s+/g, '');
 			document.getElementById(HeroAtk).value = obj.attack;
 			document.getElementById(HeroHP).value = obj.health;
