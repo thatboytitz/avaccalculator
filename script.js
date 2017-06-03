@@ -7,6 +7,9 @@ function calc() {
     var hp1 = parseInt(document.getElementById('hp1').value);
     var hp2 = parseInt(document.getElementById('hp2').value);
     var hp3 = parseInt(document.getElementById('hp3').value);
+    var pa1 = parseInt(document.getElementById('pa1').value);
+    var pa2 = parseInt(document.getElementById('pa2').value);
+    var pa3 = parseInt(document.getElementById('pa3').value);
 	var bossAtk = parseInt(document.getElementById('bossAtk').value);
     var bossHP = parseInt(document.getElementById('bossHP').value);
 
@@ -37,39 +40,38 @@ function calc() {
 	if (teamHP != 0) {
 		hitBossLast = Math.ceil(teamHP / bossAtk);
 		hitBossFirst = hitBossLast - 1;
+		if (pa1 > hitBossLast) {
+			pa1 = hitBossLast
+		}
+		if (pa2 > hitBossLast) {
+			pa2 = hitBossLast
+		}
+		if (pa3 > hitBossLast) {
+			pa3 = hitBossLast
+		}
+
+		dmgBossLast = (hitBossLast * teamAtk) + (atk1 * pa1) + (atk2 * pa2) + (atk3 * pa3);
+		fightsBossLast = Math.ceil(bossHP / dmgBossLast);
+
+		dmgBossFirst = (hitBossFirst * teamAtk) + (atk1 * pa1) + (atk2 * pa2) + (atk3 * pa3);
+		fightsBossFirst = Math.ceil(bossHP / dmgBossFirst);
+
+		summary += "<p>Number of boss' hits your team can take: " + hitBossLast + "</p><br><br>";
+
+		summary += "<h2>If the boss attack last on the last turn.</h2>";
+
+		summary += "<p>Total damage your team can do: " + dmgBossLast + "</p>";
+
+		summary += "<p>Number of fights needed to defeat the boss: " + fightsBossLast + "</p><br><br>";
+
+		summary += "<h2>If the boss attack first on the last turn.</h2>";
+
+		summary += "<p>Total damage your team can do: " + dmgBossFirst + "</p>";
+
+		summary += "<p>Number of fights needed to defeat the boss:" + fightsBossFirst + "</p>";
+		summary += "</div>"
+		document.getElementById('summary').innerHTML = summary;
 	}
-	// if (pa1 > hitBossLast) {
-	// 	pa1 = hitBossLast
-	// }
-	// if (pa2 > hitBossLast) {
-	// 	pa2 = hitBossLast
-	// }
-	// if (pa3 > hitBossLast) {
-	// 	pa3 = hitBossLast
-	// }
-
-	dmgBossLast = (hitBossLast * teamAtk);
-	fightsBossLast = Math.ceil(bossHP / dmgBossLast);
-
-	dmgBossFirst = (hitBossFirst * teamAtk);
-	fightsBossFirst = Math.ceil(bossHP / dmgBossFirst);
-
-	summary += "<p>Number of boss' hits your team can take: " + hitBossLast + "</p><br><br>";
-
-	summary += "<h2>If the boss attack last on the last turn.</h2>";
-
-	summary += "<p>Total damage your team can do: " + dmgBossLast + "</p>";
-
-	summary += "<p>Number of fights needed to defeat the boss: " + fightsBossLast + "</p><br><br>";
-
-	summary += "<h2>If the boss attack first on the last turn.</h2>";
-
-	summary += "<p>Total damage your team can do: " + dmgBossFirst + "</p>";
-
-	summary += "<p>Number of fights needed to defeat the boss:" + fightsBossFirst + "</p>";
-	summary += "</div>"
-	document.getElementById('summary').innerHTML = summary;
-	return false;
 }
 
 function setCookie(c_name,value,expireminutes){

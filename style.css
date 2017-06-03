@@ -12,7 +12,10 @@ hr {
 body {
 	background-image: url("cosmo.png");
 	background-repeat: no-repeat;
-	background-attachment: fixed;
 	background-position: right bottom;
 	margin-bottom: 200px;
+}
+
+.form-control {
+    text-align:right;
 }
