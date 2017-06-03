@@ -26,7 +26,7 @@ function calc() {
 	}
 	var myJsonString = JSON.stringify(heroRanks);
 
-	var AttackRank1, HealthRank1, atk1, hp1, type1;
+	var AttackRank1, HealthRank1, atk1, hp1, type1, temp;
 	var AttackRank2, HealthRank2, atk2, hp2, type2;
 	var AttackRank3, HealthRank3, atk3, hp3, type3;
 	console.log(myJsonString);
@@ -34,7 +34,9 @@ function calc() {
 	if(Fighter1 != 'None'){
 		AttackRank1 = getAttackRank(Fighter1);
 		HealthRank1 = getHealthRank(Fighter1);
-		Fighter1 = getCostume(Fighter1) + Fighter1;
+		temp = getCostume(Fighter1);
+		if(temp)
+			Fighter1 = temp + Fighter1;
 		atk1 = heroAtk[Fighter1][AttackRank1];
 		hp1 = heroHP[Fighter1][HealthRank1];
 		type1 = heroType[Fighter1];
@@ -50,7 +52,9 @@ function calc() {
 	if(Fighter2 != 'None'){
 		AttackRank2 = getAttackRank(Fighter2);
 		HealthRank2 = getHealthRank(Fighter2);
-		Fighter2 = getCostume(Fighter2) + Fighter2;
+		temp = getCostume(Fighter2);
+		if(temp)
+			Fighter2 = temp + Fighter2;
 		atk2 = heroAtk[Fighter2][AttackRank2];
 		hp2 = heroHP[Fighter2][HealthRank2];
 		type2 = heroType[Fighter2];
@@ -67,7 +71,9 @@ function calc() {
 	if(Fighter3 != 'None'){
 		AttackRank3 = getAttackRank(Fighter3);
 		HealthRank3 = getHealthRank(Fighter3);
-		Fighter3 = getCostume(Fighter3) + Fighter3;
+		temp = getCostume(Fighter3);
+		if(temp)
+			Fighter3 = temp + Fighter3;
 		atk3 = heroAtk[Fighter3][AttackRank3];
 		hp3 = heroHP[Fighter3][HealthRank3];
 		type3 = heroType[Fighter3];
