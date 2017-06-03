@@ -367,6 +367,7 @@ function onLoad() {
 	var cookie = getCookie("HeroData");
 	if(cookie.length > 10){
 		var retval = JSON.parse(cookie);
+		console.log(retval);
 		//alert(retval.length);
 		for(var i=0;i<retval.length;i++) {
 			var obj = retval[i];
