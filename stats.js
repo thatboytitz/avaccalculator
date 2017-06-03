@@ -21,7 +21,7 @@ var heroType = [];
 heroType["Bucky"] 					= 1;
 heroType["CaptainAmerica2099"] 				= 3;
 heroType["Loki"] 					= 1;
-heroType["MedievalSpiderWoman"]				= 3;
+heroType["MedievalSpiderWoman"]				= 2;
 heroType["Wasp"]					= 2;
 heroType["OriginalWasp"] 				= 2;
 
@@ -44,7 +44,7 @@ var quadrantAtk = [
 
 var quadrantType = [
 // Poison: 1, Quick: 2, Strong: 3, AdvPoison: 4, AdvQuick: 5, AdvStrong: 6, Ult: 7
-	[2,2,2,2,0,0,0,0],
+	[2,2,2,2,3,0,0,0],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
