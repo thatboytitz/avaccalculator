@@ -1,7 +1,7 @@
 var heroAtk = [];
 
 heroAtk["Bucky"] =					[500,560,620,740,860,1040,1220];
-heroAtk["CaptainAmerica2099"] =				[450,505,560,670,780,945,1110];
+heroAtk["Captain America 2099"] =				[450,505,560,670,780,945,1110];
 heroAtk["Loki"] =					[100,150,200,300,400,550,700];
 heroAtk["MedievalSpiderWoman"] =			[650,715,780,910,1040,1235,1430];
 heroAtk["Wasp"] = 					[100,150,200,300,400,550,700];
