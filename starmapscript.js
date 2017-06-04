@@ -35,6 +35,7 @@ function calc() {
 		AttackRank1 = getAttackRank(Fighter1);
 		HealthRank1 = getHealthRank(Fighter1);
 		temp = getCostume(Fighter1);
+		console.log(Fighter1);
 		if(temp)
 			Fighter1 = temp + Fighter1;
 		atk1 = heroAtk[Fighter1][AttackRank1];
