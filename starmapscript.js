@@ -30,7 +30,11 @@ function calc() {
 	var AttackRank2, HealthRank2, atk2, hp2, type2;
 	var AttackRank3, HealthRank3, atk3, hp3, type3;
 	console.log(myJsonString);
-
+	
+	Fighter1 = Fighter1.replace(/\s+/g, '');
+	Fighter2 = Fighter2.replace(/\s+/g, '');
+	Fighter3 = Fighter3.replace(/\s+/g, '');
+	
 	if(Fighter1 != 'None'){
 		AttackRank1 = getAttackRank(Fighter1);
 		HealthRank1 = getHealthRank(Fighter1);
