@@ -1,20 +1,20 @@
-var heroHP = [];
-
-heroHP["Bucky"] =					[500,560,620,740,0,0,0,0,0,0];
-heroHP["CaptainAmerica2099"] =				[0,0,0,0,0,0,0,0,0,0];
-heroHP["Loki"] =							[100,150,200,300,0,0,0,0,0,0];
-heroHP["MedievalSpiderWoman"] =				[650,0,0,0,0,0,0,0,0,0];
-heroHP["Wasp"] = 							[100,150,200,300,0,0,0,0,0,0];
-heroHP["OriginalWasp"] =					[0,0,0,0,0,0,0,0,0,0];
-
-
 var heroAtk = [];
-heroAtk["Bucky"] = 							[1500,1680,1860,2220,0,0,0,0,0,0];
-heroAtk["CaptainAmerica2099"] =				[0,0,0,0,0,0,0,0,0,0];
-heroAtk["Loki"] = 							[300,450,0,0,0,0,0,0,0,0];
-heroAtk["MedievalSpiderWoman"] =			[1950,0,0,0,0,0,0,0,0,0];
-heroAtk["Wasp"] =							[300,450,0,0,0,0,0,0,0,0];
-heroAtk["OriginalWasp"] =					[0,0,0,0,0,0,0,0,0,0];
+
+heroAtk["Bucky"] =					[500,560,620,740,860,1040,1220];
+heroAtk["CaptainAmerica2099"] =				[450,505,560,670,780,945,1110];
+heroAtk["Loki"] =					[100,150,200,300,400,550,700];
+heroAtk["MedievalSpiderWoman"] =			[650,715,780,910,1040,1235,1430];
+heroAtk["Wasp"] = 					[100,150,200,300,400,550,700];
+heroAtk["OriginalWasp"] =				[300,350,400,500,600,750,900];
+
+
+var heroHP = [];
+heroHP["Bucky"] = 					[1500,1680,1860,2220,2580,3120,3660];
+heroHP["CaptainAmerica2099"] =				[1350,1515,1680,2010,2340,2835,3330];
+heroHP["Loki"] = 					[300,450,600,900,1200,1650,2100];
+heroHP["MedievalSpiderWoman"] =				[1950,2145,2340,2730,3120,3705,4290];
+heroHP["Wasp"] =					[300,450,600,900,1200,1650,2100];
+heroHP["OriginalWasp"] =				[900,1050,1200,1500,1800,2250,2700];
 
 var heroType = [];
 // Poison: 1, Quick: 2, Strong: 3, AdvPoison: 4, AdvQuick: 5, AdvStrong: 6, Ult: 7
@@ -27,7 +27,7 @@ heroType["OriginalWasp"] 				= 2;
 
 
 var quadrantHP = [
-	[720,960,1200,1680,0,0,0,0],
+	[720,960,1200,1680,2400,3360,4200,5520],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
@@ -35,7 +35,7 @@ var quadrantHP = [
 ];
 
 var quadrantAtk = [
-	[120,240,240,360,0,0,0,0],
+	[120,150,210,280,450,580,780,1050],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
@@ -44,7 +44,7 @@ var quadrantAtk = [
 
 var quadrantType = [
 // Poison: 1, Quick: 2, Strong: 3, AdvPoison: 4, AdvQuick: 5, AdvStrong: 6, Ult: 7
-	[2,2,2,2,3,0,0,0],
+	[2,2,2,2,3,3,3,1],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0],
