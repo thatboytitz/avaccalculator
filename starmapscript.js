@@ -37,7 +37,7 @@ function calc() {
 		temp = getCostume(Fighter1);
 		console.log(Fighter1);
 		if(temp)
-			Fighter1 = temp + Fighter1;
+			Fighter1 = temp + " " + Fighter1;
 		atk1 = heroAtk[Fighter1][AttackRank1];
 		hp1 = heroHP[Fighter1][HealthRank1];
 		type1 = heroType[Fighter1];
@@ -55,7 +55,7 @@ function calc() {
 		HealthRank2 = getHealthRank(Fighter2);
 		temp = getCostume(Fighter2);
 		if(temp)
-			Fighter2 = temp + Fighter2;
+			Fighter2 = temp + " "  + Fighter2;
 		atk2 = heroAtk[Fighter2][AttackRank2];
 		hp2 = heroHP[Fighter2][HealthRank2];
 		type2 = heroType[Fighter2];
@@ -74,7 +74,7 @@ function calc() {
 		HealthRank3 = getHealthRank(Fighter3);
 		temp = getCostume(Fighter3);
 		if(temp)
-			Fighter3 = temp + Fighter3;
+			Fighter3 = temp + " "  + Fighter3;
 		atk3 = heroAtk[Fighter3][AttackRank3];
 		hp3 = heroHP[Fighter3][HealthRank3];
 		type3 = heroType[Fighter3];
