@@ -191,9 +191,9 @@ function calc() {
 				} 
 				break;
 		}
-		Fighter1Text += ' / ' + hp1 + '</p></div>';
-		Fighter2Text += ' / ' + hp2 + '</p></div>';
-		Fighter3Text += ' / ' + hp3 + '</p></div>';
+		Fighter1Text += ' : ' + hp1 + '</p></div>';
+		Fighter2Text += ' : ' + hp2 + '</p></div>';
+		Fighter3Text += ' : ' + hp3 + '</p></div>';
 
 		if(Fighter1 != 'None')
 			summary += Fighter1Text;
