@@ -20,7 +20,7 @@ function calc() {
 	e = document.getElementById("adv3");
 	var adv3 = parseFloat(e.options[e.selectedIndex].text);
 	e = document.getElementById("advBoss");
-	var advBoss = parseInt(e.options[e.selectedIndex].text);
+	var advBoss = parseFloat(e.options[e.selectedIndex].text);
 	
 	atk1 = atk1 * adv1;
 	atk2 = atk2 * adv2;
