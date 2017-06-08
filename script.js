@@ -14,11 +14,11 @@ function calc() {
     var bossHP = parseInt(document.getElementById('bossHP').value);
 
 	e = document.getElementById("adv1");
-	var adv1 = parseInt(e.options[e.selectedIndex].text);
+	var adv1 = parseFloat(e.options[e.selectedIndex].text);
 	e = document.getElementById("adv2");
-	var adv2 = parseInt(e.options[e.selectedIndex].text);
+	var adv2 = parseFloat(e.options[e.selectedIndex].text);
 	e = document.getElementById("adv3");
-	var adv3 = parseInt(e.options[e.selectedIndex].text);
+	var adv3 = parseFloat(e.options[e.selectedIndex].text);
 	e = document.getElementById("advBoss");
 	var advBoss = parseInt(e.options[e.selectedIndex].text);
 	
