@@ -21,6 +21,7 @@ function calc() {
 	for (var i = 0; i < heroes.length; i++) {
 		var Costume = getCostume(heroes[i]);
 		var AttackRank = getAttackRank(heroes[i]) + 1;
+		console.log(getHealthRank(heroes[i]));
 		var HealthRank = getHealthRank(heroes[i]) + 1;
 		heroRanks.push({"hero":heroes[i],"costume":Costume, "attack":AttackRank, "health":HealthRank});
 	}
@@ -121,24 +122,24 @@ function calc() {
 // Poison: 1, Quick: 2, Strong: 3, AdvPoison: 4, AdvQuick: 5, AdvStrong: 6, Ult: 7
 			case 1:
 				if(type1 == 3 || type1 == 4 || type1 == 7) {
-					Fighter1Text += ' x ' + (1 + Quadrant) + ' ';
-					atk1 *= (1 + Quadrant);
+					Fighter1Text += ' x ' + 2 + ' ';// (1 + Quadrant) + ' ';
+					atk1 *= 2; //(1 + Quadrant);
 				}
 				else if(type1 == 2) {
 					Fighter1Text += ' / ' + (1 + Quadrant) + ' ';
 					atk1 = atk1 / (1 + Quadrant);
 				}
 				if(type2 == 3 || type2 == 4 || type2 == 7) {
-					Fighter2Text += ' x ' + (1 + Quadrant) + ' ';
-					atk2 *= (1 + Quadrant);
+					Fighter2Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
+					atk2 *= 2; // (1 + Quadrant);
 				}
 				else if(type2 == 2) {
 					Fighter2Text += ' / ' + (1 + Quadrant) + ' ';
 					atk2 = atk2 / (1 + Quadrant);
 				}
 				if(type3 == 3 || type3 == 4 || type3 == 7) {
-					Fighter3Text += ' x ' + (1 + Quadrant) + ' ';
-					atk3 *= (1 + Quadrant);
+					Fighter3Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
+					atk3 *= 2; // (1 + Quadrant);
 				}
 				else if(type3 == 2) {
 					Fighter3Text += ' / ' + (1 + Quadrant) + ' ';
@@ -147,24 +148,24 @@ function calc() {
 				break;
 			case 2:
 				if(type1 == 1 || type1 == 5 || type1 == 7){
-					Fighter1Text += ' x' + (1 + Quadrant) + ' ';
-					atk1 *= (1 + Quadrant);
+					Fighter1Text += ' x' + 2 + ' ';//  (1 + Quadrant) + ' ';
+					atk1 *= 2; // (1 + Quadrant);
 				}
 				else if(type1 == 3){
 					Fighter1Text += ' / ' + (1 + Quadrant) + ' ';
 					atk1 = atk1 / (1 + Quadrant);
 				}
 				if(type2 == 1 || type2 == 5 || type2 == 7){
-					Fighter2Text += ' x ' + (1 + Quadrant) + ' ';
-					atk2 *= (1 + Quadrant);
+					Fighter2Text += ' x ' +  2 + ' ';// (1 + Quadrant) + ' ';
+					atk2 *= 2; // (1 + Quadrant);
 				}
 				else if(type2 == 3){
 					Fighter2Text += ' / ' + (1 + Quadrant) + ' ';
 					atk2 = atk2 / (1 + Quadrant);
 				}
 				if(type3 == 1 || type3 == 5 || type3 == 7){
-					Fighter3Text += ' x ' + (1 + Quadrant) + ' ';
-					atk3 *= (1 + Quadrant);
+					Fighter3Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
+					atk3 *= 2; // (1 + Quadrant);
 				}
 				else if(type3 == 3){
 					Fighter3Text += ' / ' + (1 + Quadrant) + ' ';
@@ -174,27 +175,27 @@ function calc() {
 				break;
 			case 3:
 				if(type1 == 2 || type1 == 6 || type1 == 7){
-					Fighter1Text += ' x ' + (1 + Quadrant) + ' ';
-					atk1 *= (1 + Quadrant);
+					Fighter1Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
+					atk1 *= 2; // (1 + Quadrant);
 				}
 				else if(type1 == 1){
 					Fighter1Text += ' / ' + (1 + Quadrant) + ' ';
 					atk1 = atk1 / (1 + Quadrant);
 				}
 				if(type2 == 2 || type2 == 6 || type2 == 7) {
-					Fighter2Text += ' x ' + (1 + Quadrant) + ' ';
-					atk2 *= (1 + Quadrant);
+					Fighter2Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
+					atk2 *= 2; // (1 + Quadrant);
 				}
 				else if(type2 == 1) {
 					Fighter2Text += ' / ' + (1 + Quadrant) + ' ';
 					atk2 = atk2 / (1 + Quadrant);
 				}
 				if(type3 == 2 || type3 == 6 || type3 == 7){
-					Fighter3Text += ' x ' + (1 + Quadrant) + ' ';
-					atk3 *= (1 + Quadrant);	
+					Fighter3Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
+					atk3 *= 2; // (1 + Quadrant);	
 				}
 				else if(type3 == 1){
-					Fighter3Text += ' x ' + (1 + Quadrant) + ' ';
+					Fighter3Text += ' / ' + (1 + Quadrant) + ' ';
 					atk3 = atk3 / (1 + Quadrant);	
 				} 
 				break;
@@ -312,6 +313,7 @@ function getAttackRank(fighter) {
 function getHealthRank(fighter) {
 	fighter = fighter.replace(/\s+/g, '');
 	fighter += 'HP';
+	console.log(fighter);
 	return parseInt(document.getElementById(fighter).value) - 1;
 }
 
