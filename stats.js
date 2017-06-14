@@ -28,7 +28,7 @@ heroHP["Original Wasp"] =						[900,1050,1200,1500,1800,2250,2700,3150,3600,4050
 
 var heroType = [];
 // Poison: 1, Quick: 2, Strong: 3, AdvPoison: 4, AdvQuick: 5, AdvStrong: 6, Ult: 7
-heroType["Black Widow"] =					1;
+heroType["1872 Black Widow"] =				1;
 heroType["Bucky"] =							1;
 heroType["Captain America"] =				3;
 heroType["Captain America 2099"] =			3;
