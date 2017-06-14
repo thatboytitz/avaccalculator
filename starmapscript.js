@@ -126,24 +126,24 @@ function calc() {
 					atk1 *= 2; //(1 + Quadrant);
 				}
 				else if(type1 == 2) {
-					Fighter1Text += ' / ' + (1 + Quadrant) + ' ';
-					atk1 = atk1 / (1 + Quadrant);
+					Fighter1Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk1 = atk1 / 2; //(1 + Quadrant);
 				}
 				if(type2 == 3 || type2 == 4 || type2 == 7) {
 					Fighter2Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
 					atk2 *= 2; // (1 + Quadrant);
 				}
 				else if(type2 == 2) {
-					Fighter2Text += ' / ' + (1 + Quadrant) + ' ';
-					atk2 = atk2 / (1 + Quadrant);
+					Fighter2Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk2 = atk2 / 2;//(1 + Quadrant);
 				}
 				if(type3 == 3 || type3 == 4 || type3 == 7) {
 					Fighter3Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
 					atk3 *= 2; // (1 + Quadrant);
 				}
 				else if(type3 == 2) {
-					Fighter3Text += ' / ' + (1 + Quadrant) + ' ';
-					atk3 = atk3 / (1 + Quadrant);
+					Fighter3Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk3 = atk3 / 2;//(1 + Quadrant);
 				}
 				break;
 			case 2:
@@ -152,24 +152,24 @@ function calc() {
 					atk1 *= 2; // (1 + Quadrant);
 				}
 				else if(type1 == 3){
-					Fighter1Text += ' / ' + (1 + Quadrant) + ' ';
-					atk1 = atk1 / (1 + Quadrant);
+					Fighter1Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk1 = atk1 / 2;//(1 + Quadrant);
 				}
 				if(type2 == 1 || type2 == 5 || type2 == 7){
 					Fighter2Text += ' x ' +  2 + ' ';// (1 + Quadrant) + ' ';
 					atk2 *= 2; // (1 + Quadrant);
 				}
 				else if(type2 == 3){
-					Fighter2Text += ' / ' + (1 + Quadrant) + ' ';
-					atk2 = atk2 / (1 + Quadrant);
+					Fighter2Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk2 = atk2 / 2;//(1 + Quadrant);
 				}
 				if(type3 == 1 || type3 == 5 || type3 == 7){
 					Fighter3Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
 					atk3 *= 2; // (1 + Quadrant);
 				}
 				else if(type3 == 3){
-					Fighter3Text += ' / ' + (1 + Quadrant) + ' ';
-					atk3 = atk3 / (1 + Quadrant);
+					Fighter3Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk3 = atk3 / 2;//(1 + Quadrant);
 				}
 				
 				break;
@@ -179,24 +179,24 @@ function calc() {
 					atk1 *= 2; // (1 + Quadrant);
 				}
 				else if(type1 == 1){
-					Fighter1Text += ' / ' + (1 + Quadrant) + ' ';
-					atk1 = atk1 / (1 + Quadrant);
+					Fighter1Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk1 = atk1 / 2//(1 + Quadrant);
 				}
 				if(type2 == 2 || type2 == 6 || type2 == 7) {
 					Fighter2Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
 					atk2 *= 2; // (1 + Quadrant);
 				}
 				else if(type2 == 1) {
-					Fighter2Text += ' / ' + (1 + Quadrant) + ' ';
-					atk2 = atk2 / (1 + Quadrant);
+					Fighter2Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk2 = atk2 / 2;//(1 + Quadrant);
 				}
 				if(type3 == 2 || type3 == 6 || type3 == 7){
 					Fighter3Text += ' x ' + 2 + ' ';//  (1 + Quadrant) + ' ';
 					atk3 *= 2; // (1 + Quadrant);	
 				}
 				else if(type3 == 1){
-					Fighter3Text += ' / ' + (1 + Quadrant) + ' ';
-					atk3 = atk3 / (1 + Quadrant);	
+					Fighter3Text += ' / ' + 2/*(1 + Quadrant)*/ + ' ';
+					atk3 = atk3 / 2;//(1 + Quadrant);	
 				} 
 				break;
 		}
