@@ -210,6 +210,11 @@ function calc() {
 			summary += Fighter2Text;
 		if(Fighter3 != 'None')
 			summary += Fighter3Text;
+
+		// console.log(Fighter1 + ' : ' + type1);
+		// console.log(Fighter2 + ' : ' + type2);
+		// console.log(Fighter3 + ' : ' + type3);
+		// console.log(Quadrant + '-' + Sector + ' : ' + EnemyType);
 		
 		summary += '</div>';
 
@@ -313,7 +318,6 @@ function getAttackRank(fighter) {
 function getHealthRank(fighter) {
 	fighter = fighter.replace(/\s+/g, '');
 	fighter += 'HP';
-	console.log(fighter);
 	return parseInt(document.getElementById(fighter).value) - 1;
 }
 
